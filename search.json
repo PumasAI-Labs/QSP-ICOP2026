@@ -1,0 +1,226 @@
+[
+  {
+    "objectID": "02_ParameterEstimation.html#introduction",
+    "href": "02_ParameterEstimation.html#introduction",
+    "title": "Parameter Estimation and Dose-Response Analysis",
+    "section": "1 Introduction",
+    "text": "1 Introduction\nParameter estimation is a fundamental step in QSP model development. It bridges the gap between theoretical model structures and real experimental data, transforming a conceptual model into a calibrated tool for prediction.\nThis session covers:\n\nPK Parameter Estimation: Fitting 2-compartment PK model to concentration data\nPKPD Parameter Estimation: Estimating Simeoni TGI parameters with fixed PK\nDose-Response Simulations: Exploring dosing schedules for optimal tumor control\n\n\n1.1 Two-Stage Estimation Approach\nFor PK-PD models like Simeoni, a sequential (two-stage) approach is common:\n\nStage 1: Estimate PK parameters from concentration-time data\nStage 2: Fix PK parameters and estimate PD parameters from tumor data\n\nThis approach simplifies the optimization problem and ensures PK parameters are informed by concentration data (not tumor response)."
+  },
+  {
+    "objectID": "02_ParameterEstimation.html#part-a-pk-parameter-estimation",
+    "href": "02_ParameterEstimation.html#part-a-pk-parameter-estimation",
+    "title": "Parameter Estimation and Dose-Response Analysis",
+    "section": "2 Part A: PK Parameter Estimation",
+    "text": "2 Part A: PK Parameter Estimation\n\n2.1 Data Overview\nThe PK data consists of drug concentration measurements following a 45 mg/kg dose of CPT-11:\n\nSource: data/PKdata.csv\nObservations: 7 time points (Day 13 to 15)\nDose: 45 mg/kg (0.9 mg total for 25g mouse)\nMeasurement: Plasma concentration (ng/mL)\n\n\n\n2.2 Error Model Selection\nThe choice of residual error model affects parameter estimates and model fit:\nAdditive Error: \\[DV \\sim \\mathcal{N}(\\hat{y}, \\sigma_{add})\\]\n\nVariance is constant regardless of predicted value\nAppropriate when measurement uncertainty is independent of concentration\n\nProportional Error: \\[DV \\sim \\mathcal{N}(\\hat{y}, |\\hat{y}| \\cdot \\sigma_{prop})\\]\n\nVariance scales with predicted value\nAppropriate for data spanning multiple orders of magnitude (typical for PK)\n\nFor concentration data with rapid decline from peak to trough, proportional error is generally preferred as it properly weights observations across the concentration range.\n\n\n2.3 Estimation Approach: NaivePooled\nThe NaivePooled approach treats all observations as coming from a single “typical” individual:\n\nNo inter-individual variability (IIV) is estimated\nAppropriate for pooled data where individual identity is not tracked\nFaster and simpler than mixed-effects approaches\n\n\n\nShow/Hide Code\n# Fit proportional error model using NaivePooled\nfit_proportional = fit(\n    pk_model_proportional,\n    pk_population,\n    init_params_prop,\n    NaivePooled()\n)\n\n\n\n\n2.4 PK Results\nThe estimated PK parameters:\n\n\n\nParameter\nEstimate\nUnits\nInterpretation\n\n\n\n\n\\(k_{el}\\)\n13.69\nday\\(^{-1}\\)\nRapid elimination (t½ ≈ 1.2 hours)\n\n\n\\(k_{12}\\)\n0.27\nday\\(^{-1}\\)\nModerate distribution to peripheral\n\n\n\\(k_{21}\\)\n1.49\nday\\(^{-1}\\)\nRedistribution from peripheral\n\n\n\\(V_c\\)\n0.078\nL\nCentral compartment volume\n\n\n\nThe rapid elimination rate (\\(k_{el}\\) ≈ 13.7 day\\(^{-1}\\)) corresponds to a half-life of approximately 1.2 hours, which is characteristic of CPT-11 in mice.\n\n\n2.5 Model Comparison\nModel selection uses information criteria (lower is better):\n\n\n\nMetric\nAdditive\nProportional\n\n\n\n\nAIC\nHigher\nLower\n\n\nBIC\nHigher\nLower\n\n\n\nThe proportional error model provides better fit for this PK data."
+  },
+  {
+    "objectID": "02_ParameterEstimation.html#part-b-pkpd-parameter-estimation",
+    "href": "02_ParameterEstimation.html#part-b-pkpd-parameter-estimation",
+    "title": "Parameter Estimation and Dose-Response Analysis",
+    "section": "3 Part B: PKPD Parameter Estimation",
+    "text": "3 Part B: PKPD Parameter Estimation\n\n3.1 Data Overview\nThe PD data consists of tumor weight measurements across three dose groups:\n\nControl: No drug (natural tumor growth)\n45 mg/kg: Single dose at Day 13\n60 mg/kg: Single dose at Day 13\n\nSource files:\n\ndata/PDdata_control.csv\ndata/PDdata_AllDoses.csv\n\n\n\n3.2 Fixed Parameters\nFor PKPD estimation, the following parameters are fixed at values from PK estimation:\n\n\n\nParameter\nFixed Value\nSource\n\n\n\n\n\\(k_{el}\\)\n13.686\nPK estimation\n\n\n\\(k_{12}\\)\n0.271\nPK estimation\n\n\n\\(k_{21}\\)\n1.488\nPK estimation\n\n\n\\(V_c\\)\n0.078\nPK estimation\n\n\n\\(\\psi\\)\n20.0\nLiterature convention\n\n\n\n\n\n3.3 Estimated PD Parameters\nThe Simeoni TGI parameters are estimated:\n\n\n\n\n\n\n\n\n\nParameter\nEstimate\nUnits\nInterpretation\n\n\n\n\n\\(\\lambda_0\\)\n0.124\nday\\(^{-1}\\)\nExponential doubling time ≈ 5.6 days\n\n\n\\(\\lambda_1\\)\n0.345\ng/day\nLinear growth rate\n\n\n\\(k_1\\)\n0.819\nday\\(^{-1}\\)\nTransit half-time ≈ 0.85 days\n\n\n\\(k_2\\)\n7.45 × 10\\(^{-4}\\)\nmL/(ng·day)\nDrug potency\n\n\n\\(w_0\\)\n0.085\ng\nInitial tumor weight\n\n\n\n\n\n3.4 Fitting Strategy\nThe constantcoef argument specifies which parameters to fix:\n\n\nShow/Hide Code\nfit_pkpd = fit(\n    pkpd_model,\n    pd_population,\n    init_params,\n    NaivePooled();\n    constantcoef = (\n        :tvk_el,\n        :tvk12,\n        :tvk21,\n        :tvVc,\n        :psi\n    )\n)\n\n\n\n\n3.5 Goodness-of-Fit\nModel validation includes:\n\nObservations vs Predictions: Scatter plot should show points along identity line\nSubject Fits: Individual time-course plots for each dose group\nResidual Analysis: Residuals should be randomly distributed"
+  },
+  {
+    "objectID": "02_ParameterEstimation.html#part-c-dose-exposure-response-simulations",
+    "href": "02_ParameterEstimation.html#part-c-dose-exposure-response-simulations",
+    "title": "Parameter Estimation and Dose-Response Analysis",
+    "section": "4 Part C: Dose-Exposure-Response Simulations",
+    "text": "4 Part C: Dose-Exposure-Response Simulations\n\n4.1 Scenario Design\nUsing the calibrated model, we explore different dosing schedules to understand the relationship between dosing frequency and tumor control.\nFixed parameters:\n\nDose: 60 mg/kg (1.2 mg total)\nTreatment start: Day 13 (tumor reaches ~1g threshold)\nObservation period: 180 days (6 months)\n\nVariable: Dosing frequency\n\n\n\nSchedule\nInterval\nTotal Doses (180 days)\n\n\n\n\nQ3W\nEvery 21 days\n8 doses\n\n\nQ2W\nEvery 14 days\n12 doses\n\n\nQW\nEvery 7 days\n24 doses\n\n\nQ4D\nEvery 4 days\n42 doses\n\n\n\n\n\n4.2 Simulation Results\n\n\n\nDose-exposure-response simulation showing tumor growth (left) and drug concentration (right) for different dosing schedules\n\n\n\n\n4.3 Summary Table\n\n\n\n\n\n\n\n\n\n\n\nSchedule\nFinal Tumor (g)\nMin Tumor (g)\nMax Tumor (g)\nCmax (ng/mL)\nTotal Doses\n\n\n\n\nQ3W\n10.88\n0.085\n11.24\n15,385\n8\n\n\nQ2W\n6.71\n0.085\n7.11\n15,385\n12\n\n\nQW\n0.91\n0.085\n0.97\n15,385\n24\n\n\nQ4D\n0.0\n0.0\n0.44\n15,385\n42"
+  },
+  {
+    "objectID": "02_ParameterEstimation.html#key-insights",
+    "href": "02_ParameterEstimation.html#key-insights",
+    "title": "Parameter Estimation and Dose-Response Analysis",
+    "section": "5 Key Insights",
+    "text": "5 Key Insights\n\n5.1 Exposure vs Response\n\nCmax is dose-dependent, not frequency-dependent: All schedules achieve the same peak concentration (~15,000 ng/mL) because they use the same dose amount.\nTumor control depends on sustained exposure: The Q4D schedule achieves tumor eradication while Q3W shows minimal suppression, despite identical Cmax.\nDrug half-life matters: CPT-11’s short half-life (~1.2 hours) means drug levels drop rapidly between doses. More frequent dosing maintains therapeutic pressure.\n\n\n\n5.2 Biological Interpretation\n\nQ3W/Q2W: Long inter-dose intervals allow tumor regrowth between treatments. The tumor “escapes” before the next dose.\nQW: Weekly dosing provides reasonable control but tumor oscillates around a non-zero value.\nQ4D: Every-4-days dosing maintains sufficient drug pressure to prevent tumor recovery, eventually achieving eradication.\n\n\n\n5.3 Clinical Implications\n\nMetronomic dosing: More frequent, lower-intensity dosing may outperform infrequent high doses for drugs with short half-lives.\nExposure metrics: AUC (total exposure) and time above threshold may be better predictors of efficacy than Cmax alone.\nSchedule optimization: The optimal dosing frequency depends on:\n\nDrug half-life\nTumor doubling time\nDrug potency (k₂)\nTolerability constraints"
+  },
+  {
+    "objectID": "02_ParameterEstimation.html#pumas-implementation",
+    "href": "02_ParameterEstimation.html#pumas-implementation",
+    "title": "Parameter Estimation and Dose-Response Analysis",
+    "section": "6 Pumas Implementation",
+    "text": "6 Pumas Implementation\n\n6.1 Dosage Regimen Creation\n\n\nShow/Hide Code\n# Q4D: Every 4 days, 42 total doses\ndr_q4d = DosageRegimen(\n    1.2,                    # dose amount (mg)\n    time = 13.0,            # first dose at day 13\n    cmt = 1,                # central compartment\n    ii = 4,                 # inter-dose interval (days)\n    addl = 41               # additional doses (total = 1 + addl)\n)\n\n\n\n\n6.2 Running Simulations\n\n\nShow/Hide Code\n# Create subject with dosing regimen\nsubject = Subject(id = \"Q4D\", events = dr_q4d, time = time_grid)\n\n# Run simulation with estimated parameters\nsim = simobs(scenario_model, subject, sim_params)\n\n# Convert to DataFrame for analysis\nsim_df = DataFrame(sim)"
+  },
+  {
+    "objectID": "02_ParameterEstimation.html#hands-on-exercises",
+    "href": "02_ParameterEstimation.html#hands-on-exercises",
+    "title": "Parameter Estimation and Dose-Response Analysis",
+    "section": "7 Hands-On Exercises",
+    "text": "7 Hands-On Exercises\nThe complete implementations are available in:\n\n📁 Handson/PKestimation.jl - PK model fitting with error model comparison\n📁 Handson/PKPDestimation.jl - PKPD estimation with fixed PK parameters\n📁 Handson/SimulationScenarios.jl - Dose-response scenario simulations\n\n\n7.1 Exercise Ideas\n\nError Model Comparison: Fit both additive and proportional error models. Compare AIC/BIC values. Which model is preferred?\nParameter Sensitivity: Change one estimated parameter by ±20%. How does it affect model predictions?\nNew Dosing Scenario: Design a dosing regimen that achieves tumor control with fewer total doses than Q4D. (Hint: Consider loading dose strategies.)\nAlternative Schedules: Simulate Q5D and Q6D schedules. At what interval does tumor control start to fail?"
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "Quantitative Systems Pharmacology Workshop",
+    "section": "Welcome",
+    "text": "Welcome\nWelcome to the ICOP 2026 Pre-Conference Workshop on Quantitative Systems Pharmacology (QSP) modeling. This hands-on workshop introduces the Simeoni tumor growth inhibition (TGI) model using Julia and the Pumas ecosystem.\nBy the end of this workshop, you will be able to:\n\nBuild mechanistic PK-PD models using the Pumas domain-specific language\nEstimate model parameters from experimental data\nSimulate dose-response scenarios to optimize treatment schedules\nPerform local and global sensitivity analysis to understand parameter influence"
+  },
+  {
+    "objectID": "index.html#workshop-overview",
+    "href": "index.html#workshop-overview",
+    "title": "Quantitative Systems Pharmacology Workshop",
+    "section": "Workshop Overview",
+    "text": "Workshop Overview\n\nThe Simeoni Model\nThe Simeoni TGI model is a mechanistic framework that describes:\n\nTwo-compartment pharmacokinetics - Drug distribution and elimination\nTumor growth dynamics - Exponential to linear growth transition\nDrug-induced cell damage - Transit compartment model for cell death\n\nThis model has become a standard tool for preclinical-to-clinical translation in oncology drug development.\n\n\nWhy Pumas?\nPumas is a comprehensive platform for pharmaceutical modeling and simulation that provides:\n\nExpressive DSL - Intuitive syntax for defining complex models\nHigh performance - Julia-based computation for fast simulations\nIntegrated workflows - Seamless estimation, simulation, and analysis\nSensitivity analysis - Built-in support for LSA and GSA methods"
+  },
+  {
+    "objectID": "index.html#workshop-agenda",
+    "href": "index.html#workshop-agenda",
+    "title": "Quantitative Systems Pharmacology Workshop",
+    "section": "Workshop Agenda",
+    "text": "Workshop Agenda\nThis is a 4-hour workshop with three main sessions plus breaks for hands-on exercises.\n\n\n\n\nTime\n\n\nSession\n\n\nTopics\n\n\n\n\n\n\n0:00 - 0:15\n\n\nWelcome & Setup\n\n\nIntroduction, environment check, workshop overview\n\n\n\n\n0:15 - 1:15\n\n\nSession 1: Model Building\n\n\n• Biological motivation for the Simeoni model • Mathematical formulation (PK + PD) • Pumas DSL: @param, @pre, @init, @vars, @dynamics, @derived&lt;br/&gt; • Simulation and visualization\n\n\n\n\n1:15 - 1:30\n\n\nBreak\n\n\nHands-on: Modify model parameters and observe effects\n\n\n\n\n1:30 - 2:30\n\n\nSession 2: Parameter Estimation\n\n\n• PK estimation with error model selection • PKPD estimation with fixed PK parameters • Model diagnostics and goodness-of-fit • Dose-response simulation scenarios (Q3W to Q4D)\n\n\n\n\n2:30 - 2:45\n\n\nBreak\n\n\nHands-on: Design your own dosing scenario\n\n\n\n\n2:45 - 3:45\n\n\nSession 3: Sensitivity Analysis\n\n\n• Local sensitivity analysis (LSA) methodology • Tornado plot interpretation • Global sensitivity analysis (GSA) with Sobol indices • Comparing S1 and ST indices\n\n\n\n\n3:45 - 4:00\n\n\nWrap-up & Q&A\n\n\nKey takeaways, additional resources, discussion"
+  },
+  {
+    "objectID": "index.html#session-materials",
+    "href": "index.html#session-materials",
+    "title": "Quantitative Systems Pharmacology Workshop",
+    "section": "Session Materials",
+    "text": "Session Materials\n\nSession 1: The Simeoni Tumor Growth Inhibition Model\n60 minutes\nLearn the biological basis and mathematical formulation of the Simeoni TGI model. Build a complete PK-PD model in Pumas and simulate tumor response across multiple dose levels.\nTopics covered:\n\nExponential → linear tumor growth transition\nTransit compartment model for drug-induced cell death\n2-compartment PK with micro-rate parameterization\nPumas model blocks and simulation workflow\n\nGo to Session 1 →\n\n\nSession 2: Parameter Estimation and Dose-Response Analysis\n60 minutes\nEstimate model parameters from experimental data using the two-stage approach. Explore how dosing frequency affects tumor control through simulation scenarios.\nTopics covered:\n\nAdditive vs proportional error models\nNaivePooled estimation approach\nFixing PK parameters for PD estimation\nDose-exposure-response relationships (Q3W, Q2W, QW, Q4D)\n\nGo to Session 2 →\n\n\nSession 3: Sensitivity Analysis (LSA and GSA)\n60 minutes\nQuantify parameter influence on model predictions using local and global sensitivity analysis. Understand which parameters drive tumor growth and treatment response.\nTopics covered:\n\nOne-at-a-time perturbation (LSA)\nSobol variance-based indices (GSA)\nFirst-order (S1) vs total-order (ST) effects\nParameter interactions and biological interpretation\n\nGo to Session 3 →"
+  },
+  {
+    "objectID": "index.html#hands-on-scripts",
+    "href": "index.html#hands-on-scripts",
+    "title": "Quantitative Systems Pharmacology Workshop",
+    "section": "Hands-On Scripts",
+    "text": "Hands-On Scripts\nAll workshop code is available in the Handson/ directory:\n\n\n\nScript\nDescription\n\n\n\n\nSimeoneModel.jl\nComplete model building and simulation\n\n\nPKestimation.jl\nPK parameter estimation with model comparison\n\n\nPKPDestimation.jl\nPKPD estimation with fixed PK\n\n\nSimulationScenarios.jl\nDose-response scenario simulations\n\n\nLocalSensitivityAnalysis.jl\nLSA with tornado plots\n\n\nGlobalSensitivityAnalysis.jl\nGSA with Sobol indices"
+  },
+  {
+    "objectID": "index.html#prerequisites",
+    "href": "index.html#prerequisites",
+    "title": "Quantitative Systems Pharmacology Workshop",
+    "section": "Prerequisites",
+    "text": "Prerequisites\n\nSoftware Requirements\n\nJulia 1.10+ with Pumas environment\nRequired packages: Pumas, PumasUtilities, AlgebraOfGraphics, CairoMakie, DataFramesMeta, CSV, GlobalSensitivity\n\n\n\nBackground Knowledge\n\nBasic understanding of pharmacokinetics (compartmental models)\nFamiliarity with differential equations (conceptual)\nSome programming experience (Julia or similar)"
+  },
+  {
+    "objectID": "index.html#reference",
+    "href": "index.html#reference",
+    "title": "Quantitative Systems Pharmacology Workshop",
+    "section": "Reference",
+    "text": "Reference\nPrimary Reference:\nSimeoni M, Magni P, Cammia C, De Nicolao G, Croci V, Pesenti E, Germani M, Poggesi I, Rocchetti M. (2004) “Predictive Pharmacokinetic-Pharmacodynamic Modeling of Tumor Growth Kinetics in Xenograft Models after Administration of Anticancer Agents.” Cancer Research 64:1094-1101."
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "Quantitative Systems Pharmacology Workshop",
+    "section": "Contact",
+    "text": "Contact\nFor questions about this workshop or the Pumas platform, please contact:\n\nWorkshop Materials: GitHub Repository\nPumas Documentation: docs.pumas.ai\nPumas Support: support@pumas.ai"
+  },
+  {
+    "objectID": "01_SimeoniModel.html#introduction",
+    "href": "01_SimeoniModel.html#introduction",
+    "title": "The Simeoni Tumor Growth Inhibition Model",
+    "section": "1 Introduction",
+    "text": "1 Introduction\nThe Simeoni tumor growth inhibition (TGI) model is a mechanistic pharmacokinetic-pharmacodynamic (PK-PD) framework used extensively in cancer drug development. Originally developed to describe the growth kinetics of xenograft tumors in mice and their response to anticancer agents, this model has become a standard tool for preclinical-to-clinical translation.\nReference: Simeoni M, et al. (2004) “Predictive Pharmacokinetic-Pharmacodynamic Modeling of Tumor Growth Kinetics in Xenograft Models after Administration of Anticancer Agents.” Cancer Research 64:1094-1101.\n\n1.1 Clinical Context\nXenograft tumor models are widely used in drug development to:\n\nEvaluate anticancer drug efficacy before clinical trials\nOptimize dosing schedules for maximum tumor suppression\nUnderstand the relationship between drug exposure and tumor response\nPredict human tumor response based on preclinical data\n\nThe Simeoni model provides a mathematical framework to quantify these relationships and support translational predictions."
+  },
+  {
+    "objectID": "01_SimeoniModel.html#biological-motivation",
+    "href": "01_SimeoniModel.html#biological-motivation",
+    "title": "The Simeoni Tumor Growth Inhibition Model",
+    "section": "2 Biological Motivation",
+    "text": "2 Biological Motivation\n\n2.1 Unperturbed Tumor Growth\nTumor growth in the absence of treatment follows a characteristic pattern:\n\nEarly stage (exponential growth): When the tumor is small, cells have unlimited access to nutrients and oxygen. The tumor mass doubles at a constant rate, leading to exponential growth.\nLate stage (linear growth): As the tumor grows larger, the interior becomes nutrient-limited. Only the outer rim of cells actively proliferates, resulting in linear (rather than exponential) growth.\nSmooth transition: The transition between these phases is gradual, not abrupt. The Simeoni model captures this with a smooth mathematical transition function.\n\n\n\n2.2 Drug-Induced Cell Damage\nWhen an anticancer drug is administered:\n\nThe drug damages proliferating tumor cells\nDamaged cells do not die immediately but progress through a series of transit compartments\nThis delay between damage and cell death reflects biological reality (apoptosis is not instantaneous)\nThe transit compartment approach captures the distribution of cell death times"
+  },
+  {
+    "objectID": "01_SimeoniModel.html#mathematical-formulation",
+    "href": "01_SimeoniModel.html#mathematical-formulation",
+    "title": "The Simeoni Tumor Growth Inhibition Model",
+    "section": "3 Mathematical Formulation",
+    "text": "3 Mathematical Formulation\n\n3.1 Unperturbed Growth Equation\nThe Simeoni model describes tumor growth using:\n\\[\\frac{dw}{dt} = \\frac{\\lambda_0 \\cdot w}{\\left[1 + \\left(\\frac{\\lambda_0}{\\lambda_1} \\cdot w\\right)^\\psi\\right]^{1/\\psi}}\\]\nwhere:\n\n\n\nSymbol\nDescription\nUnits\n\n\n\n\n\\(w\\)\nTumor weight\ng\n\n\n\\(\\lambda_0\\)\nExponential growth rate\nday\\(^{-1}\\)\n\n\n\\(\\lambda_1\\)\nLinear growth rate\ng/day\n\n\n\\(\\psi\\)\nTransition sharpness\ndimensionless\n\n\n\nLimiting behavior:\n\nWhen \\(w\\) is small: \\(\\frac{dw}{dt} \\approx \\lambda_0 \\cdot w\\) (exponential growth)\nWhen \\(w\\) is large: \\(\\frac{dw}{dt} \\approx \\lambda_1\\) (linear growth)\n\nThe parameter \\(\\psi\\) (typically fixed at 20) controls how sharply the transition occurs. Higher values create a more abrupt switch between growth phases.\n\n\n3.2 Drug-Perturbed Dynamics\nWhen drug is present, the model uses four compartments to track tumor cells:\n\nx₁: Proliferating (drug-sensitive) cells\nx₂, x₃, x₄: Damaged cells progressing through transit compartments toward death\n\nThe ODE system becomes:\n\\[\\frac{dx_1}{dt} = \\text{growth} - k_2 \\cdot c(t) \\cdot x_1\\]\n\\[\\frac{dx_2}{dt} = k_2 \\cdot c(t) \\cdot x_1 - k_1 \\cdot x_2\\]\n\\[\\frac{dx_3}{dt} = k_1 \\cdot (x_2 - x_3)\\]\n\\[\\frac{dx_4}{dt} = k_1 \\cdot (x_3 - x_4)\\]\nwhere:\n\n\n\nSymbol\nDescription\nUnits\n\n\n\n\n\\(k_2\\)\nDrug potency\nmL/(ng·day)\n\n\n\\(k_1\\)\nTransit rate constant\nday\\(^{-1}\\)\n\n\n\\(c(t)\\)\nPlasma drug concentration\nng/mL\n\n\n\nThe total tumor weight at any time is: \\(w = x_1 + x_2 + x_3 + x_4\\)\nThe growth term uses the same Simeoni equation but applied to proliferating cells:\n\\[\\text{growth} = \\frac{\\lambda_0 \\cdot x_1}{\\left[1 + \\left(\\frac{\\lambda_0}{\\lambda_1} \\cdot w\\right)^\\psi\\right]^{1/\\psi}}\\]"
+  },
+  {
+    "objectID": "01_SimeoniModel.html#pharmacokinetic-model",
+    "href": "01_SimeoniModel.html#pharmacokinetic-model",
+    "title": "The Simeoni Tumor Growth Inhibition Model",
+    "section": "4 Pharmacokinetic Model",
+    "text": "4 Pharmacokinetic Model\nThe drug concentration is described by a 2-compartment PK model with micro-rate constant parameterization:\n\\[\\frac{d(\\text{Central})}{dt} = -k_{el} \\cdot \\text{Central} - k_{12} \\cdot \\text{Central} + k_{21} \\cdot \\text{Peripheral}\\]\n\\[\\frac{d(\\text{Peripheral})}{dt} = k_{12} \\cdot \\text{Central} - k_{21} \\cdot \\text{Peripheral}\\]\nThe plasma concentration is calculated as:\n\\[c_p = \\frac{\\text{Central}}{V_c} \\times 1000 \\quad \\text{(ng/mL)}\\]\n\n4.1 PK Parameters\n\n\n\nParameter\nDescription\nUnits\n\n\n\n\n\\(k_{el}\\)\nElimination rate constant\nday\\(^{-1}\\)\n\n\n\\(k_{12}\\)\nCentral → Peripheral rate\nday\\(^{-1}\\)\n\n\n\\(k_{21}\\)\nPeripheral → Central rate\nday\\(^{-1}\\)\n\n\n\\(V_c\\)\nCentral volume\nL"
+  },
+  {
+    "objectID": "01_SimeoniModel.html#model-schematic",
+    "href": "01_SimeoniModel.html#model-schematic",
+    "title": "The Simeoni Tumor Growth Inhibition Model",
+    "section": "5 Model Schematic",
+    "text": "5 Model Schematic\nThe complete PK-PD model structure:\n\n\n\n\n\n%%| fig-width: 10\nflowchart TB\n    subgraph PK[\"&lt;b&gt;PHARMACOKINETICS&lt;/b&gt;\"]\n        direction LR\n        Dose([\" Dose \"]) --&gt; Central[\"Central&lt;br/&gt;(Amount)\"]\n        Central -- \"k&lt;sub&gt;12&lt;/sub&gt;\" --&gt; Peripheral[\"Peripheral&lt;br/&gt;(Amount)\"]\n        Peripheral -- \"k&lt;sub&gt;21&lt;/sub&gt;\" --&gt; Central\n        Central -- \"k&lt;sub&gt;el&lt;/sub&gt;\" --&gt; Elim((\" \"))\n    end\n\n    Central -.-&gt; |\"c&lt;sub&gt;p&lt;/sub&gt; = Central/V&lt;sub&gt;c&lt;/sub&gt; × 1000\"| x1\n\n    subgraph PD[\"&lt;b&gt;PHARMACODYNAMICS&lt;/b&gt;\"]\n        direction LR\n        x1[\"x₁&lt;br/&gt;(Proliferating)\"] -- \"k₂·c&lt;sub&gt;p&lt;/sub&gt;\" --&gt; x2[\"x₂&lt;br/&gt;(Damaged)\"]\n        x2 -- \"k₁\" --&gt; x3[\"x₃&lt;br/&gt;(Damaged)\"]\n        x3 -- \"k₁\" --&gt; x4[\"x₄&lt;br/&gt;(Damaged)\"]\n        x4 -- \"k₁\" --&gt; Death((\" \"))\n    end\n\n    Tumor[\"Tumor = x₁ + x₂ + x₃ + x₄\"] -.-&gt; |\"growth\"| x1\n    x1 & x2 & x3 & x4 -.-&gt; Tumor\n\n    style PK fill:#e6f3ff,stroke:#0066cc\n    style PD fill:#fff0e6,stroke:#cc6600\n    style Dose fill:#90EE90,stroke:#228B22\n    style Elim fill:#ffcccc,stroke:#cc0000\n    style Death fill:#ffcccc,stroke:#cc0000\n    style Tumor fill:#ffffcc,stroke:#999900"
+  },
+  {
+    "objectID": "01_SimeoniModel.html#simulation-results",
+    "href": "01_SimeoniModel.html#simulation-results",
+    "title": "The Simeoni Tumor Growth Inhibition Model",
+    "section": "6 Simulation Results",
+    "text": "6 Simulation Results\n\n6.1 PK Profile (45 mg/kg)\nThe following figure shows the simulated drug concentration profile compared to observed data following a single 45 mg/kg dose of CPT-11 (irinotecan) administered on Day 13.\n\n\n\nPK simulation at 45 mg/kg showing rapid drug elimination\n\n\nKey observations:\n\nPeak concentration (Cmax) occurs immediately after dosing\nRapid initial decline reflects distribution phase\nTerminal elimination phase shows the drug half-life\nThe 2-compartment model captures the biphasic decline\n\n\n\n6.2 Tumor Growth Inhibition (All Doses)\nThe tumor response to different dose levels demonstrates dose-dependent efficacy.\n\n\n\nTumor growth inhibition for Control, 45 mg/kg, and 60 mg/kg\n\n\nKey observations:\n\nControl: Tumor grows following the characteristic exponential → linear pattern\n45 mg/kg: Partial tumor suppression; growth is slowed but not arrested\n60 mg/kg: Greater tumor suppression; tumor growth is substantially inhibited\nBoth treated groups show tumor recovery after drug washout (single dose)"
+  },
+  {
+    "objectID": "01_SimeoniModel.html#pumas-implementation-highlights",
+    "href": "01_SimeoniModel.html#pumas-implementation-highlights",
+    "title": "The Simeoni Tumor Growth Inhibition Model",
+    "section": "7 Pumas Implementation Highlights",
+    "text": "7 Pumas Implementation Highlights\nThe Simeoni model is implemented in Pumas using several key blocks.\n\n7.1 Parameter Definition (@param)\n\n\nShow/Hide Code\n@param begin\n    # PK Parameters (micro-rate constants)\n    tvk_el ∈ RealDomain(lower=0.0)     # Elimination rate constant (day⁻¹)\n    tvk12  ∈ RealDomain(lower=0.0)     # Central→Peripheral rate (day⁻¹)\n    tvk21  ∈ RealDomain(lower=0.0)     # Peripheral→Central rate (day⁻¹)\n    tvVc   ∈ RealDomain(lower=0.0)     # Central volume (L)\n\n    # PD Parameters (Simeoni TGI)\n    tvlambda0 ∈ RealDomain(lower=0.0)  # Exponential growth rate (day⁻¹)\n    tvlambda1 ∈ RealDomain(lower=0.0)  # Linear growth rate (g/day)\n    tvk1      ∈ RealDomain(lower=0.0)  # Transit rate constant (day⁻¹)\n    tvk2      ∈ RealDomain(lower=0.0)  # Drug potency (mL/ng/day)\n    tvw0      ∈ RealDomain(lower=0.0)  # Initial tumor weight (g)\n    psi       ∈ RealDomain(lower=1.0)  # Growth switch (FIXED)\nend\n\n\n\n\n7.2 Intermediate Variables (@vars)\nThe Simeoni growth term is computed in the @vars block:\n\n\nShow/Hide Code\n@vars begin\n    # Drug concentration (ng/mL)\n    cp = (Central / max(Vc, 1e-10)) * 1000\n\n    # Total tumor weight (sum of all compartments)\n    tumor = x1 + x2 + x3 + x4\n\n    # Simeoni growth term with exponential→linear transition\n    growth = lambda0 * x1 / (1.0 + (lambda0 / lambda1 * tumor)^psi)^(1.0 / psi)\nend\n\n\n\n\n7.3 Dynamics (@dynamics)\n\n\nShow/Hide Code\n@dynamics begin\n    # PK: 2-Compartment Model\n    Central'    = -k_el * Central - k12 * Central + k21 * Peripheral\n    Peripheral' = k12 * Central - k21 * Peripheral\n\n    # PD: Simeoni TGI Transit Compartment Model\n    x1' = growth - k2 * cp * x1\n    x2' = k2 * cp * x1 - k1 * x2\n    x3' = k1 * (x2 - x3)\n    x4' = k1 * (x3 - x4)\nend"
+  },
+  {
+    "objectID": "01_SimeoniModel.html#summary-model-parameters",
+    "href": "01_SimeoniModel.html#summary-model-parameters",
+    "title": "The Simeoni Tumor Growth Inhibition Model",
+    "section": "8 Summary: Model Parameters",
+    "text": "8 Summary: Model Parameters\n\n\n\nParameter\nDescription\nUnits\nTypical Value\n\n\n\n\n\\(\\lambda_0\\)\nExponential growth rate\nday\\(^{-1}\\)\n0.12 - 0.15\n\n\n\\(\\lambda_1\\)\nLinear growth rate\ng/day\n0.33 - 0.35\n\n\n\\(\\psi\\)\nTransition sharpness\n—\n20 (fixed)\n\n\n\\(k_1\\)\nTransit rate constant\nday\\(^{-1}\\)\n0.47 - 0.82\n\n\n\\(k_2\\)\nDrug potency\nmL/(ng·day)\n7 - 8 × 10\\(^{-4}\\)\n\n\n\\(w_0\\)\nInitial tumor weight\ng\n0.085\n\n\n\\(k_{el}\\)\nElimination rate\nday\\(^{-1}\\)\n~13.5\n\n\n\\(k_{12}\\)\nDistribution rate\nday\\(^{-1}\\)\n~0.27\n\n\n\\(k_{21}\\)\nRedistribution rate\nday\\(^{-1}\\)\n~1.5 - 2.0\n\n\n\\(V_c\\)\nCentral volume\nL\n~0.08"
+  },
+  {
+    "objectID": "01_SimeoniModel.html#hands-on-exercise",
+    "href": "01_SimeoniModel.html#hands-on-exercise",
+    "title": "The Simeoni Tumor Growth Inhibition Model",
+    "section": "9 Hands-On Exercise",
+    "text": "9 Hands-On Exercise\nThe complete implementation is available in:\n📁 Handson/SimeoneModel.jl\nThis script includes:\n\nModel building with all Pumas DSL blocks\nSubject and dosing regimen creation\nSimulation for multiple dose groups\nVisualization comparing simulations to observed data"
+  },
+  {
+    "objectID": "03_SensitivityAnalysis.html#introduction",
+    "href": "03_SensitivityAnalysis.html#introduction",
+    "title": "Sensitivity Analysis: LSA and GSA",
+    "section": "1 Introduction",
+    "text": "1 Introduction\nSensitivity analysis quantifies how model outputs change in response to parameter variations. It addresses fundamental questions in QSP modeling:\n\nWhich parameters matter most? Focus estimation efforts on influential parameters.\nWhich parameters can be fixed? Simplify models by fixing insensitive parameters.\nHow uncertain are predictions? Propagate parameter uncertainty to outputs.\nWhere should data be collected? Design experiments to constrain sensitive parameters.\n\n\n1.1 Two Complementary Approaches\n\n\n\n\n\n\n\n\nApproach\nAbbreviation\nDescription\n\n\n\n\nLocal Sensitivity Analysis\nLSA\nPerturbations around a single baseline point\n\n\nGlobal Sensitivity Analysis\nGSA\nSampling across the entire parameter space\n\n\n\nBoth approaches provide valuable but different insights. LSA is computationally fast and intuitive; GSA captures nonlinear effects and parameter interactions."
+  },
+  {
+    "objectID": "03_SensitivityAnalysis.html#part-a-local-sensitivity-analysis-lsa",
+    "href": "03_SensitivityAnalysis.html#part-a-local-sensitivity-analysis-lsa",
+    "title": "Sensitivity Analysis: LSA and GSA",
+    "section": "2 Part A: Local Sensitivity Analysis (LSA)",
+    "text": "2 Part A: Local Sensitivity Analysis (LSA)\n\n2.1 Methodology\nLSA uses one-at-a-time (OAT) perturbation:\n\nStart with baseline parameter values\nPerturb one parameter by a fixed percentage (e.g., ±50%)\nRun simulation and record the output\nRepeat for each parameter\n\nThis approach assumes other parameters remain at their baseline values while one is varied.\n\n\n2.2 Configuration\nFor the Simeoni model LSA:\n\n\n\nSetting\nValue\n\n\n\n\nPerturbation\n±50% of baseline\n\n\nEndpoint\nTumor weight at Day 30\n\n\nParameters\nλ₀, λ₁, ψ, k₁, k₂\n\n\nDose groups\nControl, 45 mg/kg, 60 mg/kg\n\n\n\n\n\n2.3 Sensitivity Metric\nThe total sensitivity for each parameter combines both directions:\n\\[\\text{Sensitivity} = \\frac{|\\Delta y|_{+50\\%} + |\\Delta y|_{-50\\%}}{y_{\\text{baseline}}} \\times 100\\%\\]\nwhere \\(\\Delta y\\) is the change in output (tumor weight) from baseline.\n\n\n2.4 LSA Results\n\n\n\nTornado plots showing local sensitivity of tumor weight at Day 30 for each dose group\n\n\n\n\n2.5 Reading Tornado Plots\nTornado plots visualize parameter sensitivity:\n\nBar direction: Effect direction (positive = parameter increase → output increase)\nBar length: Magnitude of effect (longer = more sensitive)\nParameter ordering: Sorted by total sensitivity (most sensitive at bottom)\nColor: Blue = +50% perturbation, Red = -50% perturbation\n\n\n\n2.6 Interpretation by Dose Group\nControl (No Drug):\n\n\n\nParameter\n+50% Effect\n-50% Effect\nInterpretation\n\n\n\n\nλ₀\n+89%\n-84%\nDominant driver of tumor growth\n\n\nλ₁\n+3%\n-22%\nModerate effect on late-stage growth\n\n\nψ\n+0.2%\n-1%\nMinimal effect\n\n\nk₁\n0%\n0%\nNo effect (no drug)\n\n\nk₂\n0%\n0%\nNo effect (no drug)\n\n\n\nTreated Groups (45, 60 mg/kg):\n\nλ₀ remains the most sensitive parameter\nk₂ becomes influential: Higher k₂ → smaller tumor (more effective killing)\nSensitivity to k₂ increases with dose (60 mg/kg more sensitive than 45 mg/kg)\n\n\n\n2.7 LSA Summary Table\n\n\n\nParameter\nControl\n45 mg/kg\n60 mg/kg\nEffect Direction\n\n\n\n\nλ₀\n173%\n266%\n306%\n↑ λ₀ → ↑ tumor\n\n\nk₂\n0%\n64%\n86%\n↑ k₂ → ↓ tumor\n\n\nλ₁\n25%\n4%\n1%\n↑ λ₁ → ↓ tumor\n\n\nk₁\n0%\n0.3%\n0.5%\n↑ k₁ → ↓ tumor\n\n\nψ\n1%\n0%\n0%\nMinimal"
+  },
+  {
+    "objectID": "03_SensitivityAnalysis.html#part-b-global-sensitivity-analysis-gsa",
+    "href": "03_SensitivityAnalysis.html#part-b-global-sensitivity-analysis-gsa",
+    "title": "Sensitivity Analysis: LSA and GSA",
+    "section": "3 Part B: Global Sensitivity Analysis (GSA)",
+    "text": "3 Part B: Global Sensitivity Analysis (GSA)\n\n3.1 Methodology: Sobol Variance-Based Analysis\nGSA explores the entire parameter space simultaneously:\n\nDefine parameter ranges (e.g., ±50% around baseline)\nSample parameter combinations using Sobol sequences\nRun simulations for all samples\nDecompose output variance to attribute contributions to parameters\n\nThe Sobol method provides a rigorous framework for variance decomposition that captures both individual parameter effects and interactions.\n\n\n3.2 Configuration\n\n\n\nSetting\nValue\n\n\n\n\nParameter ranges\n±50% of baseline (uniform sampling)\n\n\nNumber of samples\n1,000\n\n\nBootstrap replicates\n100 (for confidence intervals)\n\n\nEndpoint\nFinal tumor weight at Day 30\n\n\nParameters varied\nλ₀, λ₁, ψ, k₁, k₂\n\n\n\n\n\n3.3 Sobol Indices Explained\nFirst-Order Index (S1):\n\\[S_1 = \\frac{V[E(Y|X_i)]}{V(Y)}\\]\n\nFraction of output variance explained by parameter \\(X_i\\) alone\nS1 = 0.5 means parameter explains 50% of variance directly\nHigher S1 → stronger direct effect\n\nTotal-Order Index (ST):\n\\[S_T = 1 - \\frac{V[E(Y|X_{-i})]}{V(Y)}\\]\n\nIncludes direct effect plus all interactions with other parameters\nST ≥ S1 always (equality when no interactions)\nHigher ST → parameter is important (directly or through interactions)\n\nInteraction Contribution:\n\\[\\text{Interaction} = S_T - S_1\\]\n\nQuantifies how much of the parameter’s influence comes from interactions\nLarge interaction → parameter’s effect depends on other parameter values\n\n\n\n3.4 GSA Results\n\n\n\nSobol sensitivity indices (S1 and ST) for each dose group\n\n\n\n\n3.5 Key GSA Findings\nControl Group:\n\n\n\nParameter\nS1\nST\nInteraction\nInterpretation\n\n\n\n\nλ₀\n0.70\n0.78\n0.08\nDominant driver + moderate interactions\n\n\nλ₁\n0.22\n0.30\n0.08\nSecondary driver + interactions\n\n\nψ\n~0\n~0\n~0\nNegligible effect\n\n\nk₁\n~0\n~0\n~0\nNo effect (no drug)\n\n\nk₂\n~0\n~0\n~0\nNo effect (no drug)\n\n\n\nTreated Groups (45, 60 mg/kg):\n\n\n\nParameter\nS1\nST\nTrend\n\n\n\n\nλ₀\n0.78-0.79\n0.85-0.86\nMost important\n\n\nλ₁\n0.12-0.14\n0.19-0.21\nSecondary\n\n\nk₂\n0.01-0.02\n0.01-0.02\nEmerges with drug\n\n\nk₁\n~0\n~0\nMinimal\n\n\nψ\n~0\n~0\nNegligible"
+  },
+  {
+    "objectID": "03_SensitivityAnalysis.html#lsa-vs-gsa-comparison",
+    "href": "03_SensitivityAnalysis.html#lsa-vs-gsa-comparison",
+    "title": "Sensitivity Analysis: LSA and GSA",
+    "section": "4 LSA vs GSA Comparison",
+    "text": "4 LSA vs GSA Comparison\n\n\n\n\n\n\n\n\nAspect\nLSA\nGSA\n\n\n\n\nParameter space\nLocal (±50% around one point)\nGlobal (entire range)\n\n\nPerturbation\nOne-at-a-time\nAll parameters simultaneously\n\n\nInteractions\nNot captured\nQuantified via ST - S1\n\n\nNonlinearity\nLimited capture\nFully captured\n\n\nComputation\nFast (~30 simulations)\nIntensive (~1000+ samples)\n\n\nOutput format\n% change (tornado)\nVariance fraction (Sobol)\n\n\nBest for\nQuick screening\nComprehensive analysis\n\n\n\n\n4.1 When to Use Each Method\nUse LSA when:\n\nQuick parameter screening is needed\nModel is approximately linear\nInteractions are expected to be small\nComputational resources are limited\n\nUse GSA when:\n\nComprehensive analysis is required\nNonlinear effects are suspected\nParameter interactions matter\nUncertainty quantification is the goal"
+  },
+  {
+    "objectID": "03_SensitivityAnalysis.html#biological-interpretation",
+    "href": "03_SensitivityAnalysis.html#biological-interpretation",
+    "title": "Sensitivity Analysis: LSA and GSA",
+    "section": "5 Biological Interpretation",
+    "text": "5 Biological Interpretation\n\n5.1 Parameter Effects on Tumor Growth\nλ₀ (Exponential Growth Rate):\n\nMost influential parameter across all conditions\nDetermines how fast the tumor grows early (when small)\nS1 ≈ 0.70-0.79 → explains 70-79% of tumor variance\nClinical relevance: Accurate estimation of λ₀ is critical for predictions\n\nλ₁ (Linear Growth Rate):\n\nSecondary importance, affects late-stage growth\nInteracts with λ₀ (ST &gt; S1 by ~0.08)\nClinical relevance: Important for long-term predictions\n\nk₂ (Drug Potency):\n\nNo effect in control (no drug present)\nBecomes relevant in treated groups\nHigher dose → greater sensitivity to k₂\nClinical relevance: Key parameter for treatment optimization\n\nk₁ (Transit Rate):\n\nMinimal direct effect on tumor weight\nControls timing of cell death, not magnitude\nMay matter more for time-course shape than endpoint\n\nψ (Transition Sharpness):\n\nNegligible effect when fixed at conventional value (20)\nModel predictions robust to ψ uncertainty\nJustification for fixing ψ during estimation"
+  },
+  {
+    "objectID": "03_SensitivityAnalysis.html#practical-guidelines",
+    "href": "03_SensitivityAnalysis.html#practical-guidelines",
+    "title": "Sensitivity Analysis: LSA and GSA",
+    "section": "6 Practical Guidelines",
+    "text": "6 Practical Guidelines\n\n6.1 Workflow Recommendation\n\nStart with LSA: Quick screening to identify potentially sensitive parameters\nFocus estimation efforts: Prioritize accurate estimation of sensitive parameters\nUse GSA for validation: Confirm findings and quantify interactions\nReport both S1 and ST: Provides complete picture of parameter behavior\n\n\n\n6.2 Interpretation Rules of Thumb\n\n\n\nIndex Value\nInterpretation\n\n\n\n\nS1 &gt; 0.5\nDominant driver of variance\n\n\nS1 = 0.1 - 0.5\nModerate contributor\n\n\nS1 &lt; 0.1\nMinor contributor\n\n\nST - S1 &gt; 0.1\nSignificant interactions\n\n\nST - S1 &lt; 0.05\nActs largely independently\n\n\n\n\n\n6.3 Computational Considerations\n\nLSA: ~(2 × n_params + 1) × n_groups simulations\n\nFor 5 parameters, 3 groups: ~33 simulations\n\nGSA: ~n_samples × (n_params + 2) × n_groups model evaluations\n\nFor 1000 samples, 5 parameters, 3 groups: ~21,000 evaluations"
+  },
+  {
+    "objectID": "03_SensitivityAnalysis.html#pumas-implementation",
+    "href": "03_SensitivityAnalysis.html#pumas-implementation",
+    "title": "Sensitivity Analysis: LSA and GSA",
+    "section": "7 Pumas Implementation",
+    "text": "7 Pumas Implementation\n\n7.1 LSA: Parameter Perturbation\n\n\nShow/Hide Code\n# Perturb one parameter by ±50%\nfunction perturb_params(baseline, param_name, direction)\n    factor = direction == :increase ? 1.5 : 0.5  # ±50%\n    params_dict = Dict(pairs(baseline))\n    params_dict[param_name] = baseline[param_name] * factor\n    return NamedTuple(params_dict)\nend\n\n# Run perturbed simulation\nparams_inc = perturb_params(baseline_params, :tvlambda0, :increase)\nsim_inc = simobs(lsa_model, subject, params_inc)\n\n\n\n\n7.2 GSA: Sobol Analysis in Pumas\n\n\nShow/Hide Code\nusing GlobalSensitivity\n\n# Define parameter ranges (±50% of baseline)\np_range_low = (\n    tvlambda0 = baseline.tvlambda0 * 0.5,\n    tvlambda1 = baseline.tvlambda1 * 0.5,\n    psi       = baseline.psi * 0.5,\n    tvk1      = baseline.tvk1 * 0.5,\n    tvk2      = baseline.tvk2 * 0.5,\n)\n\np_range_high = (\n    tvlambda0 = baseline.tvlambda0 * 1.5,\n    tvlambda1 = baseline.tvlambda1 * 1.5,\n    psi       = baseline.psi * 1.5,\n    tvk1      = baseline.tvk1 * 1.5,\n    tvk2      = baseline.tvk2 * 1.5,\n)\n\n# Run Sobol GSA\ngsa_result = Pumas.gsa(\n    gsa_model,\n    subject,\n    baseline_params,\n    Sobol(nboot = 100),          # Method with bootstrap CI\n    [:final_tumor],               # Output variable from @observed\n    p_range_low,\n    p_range_high;\n    constantcoef = (:tvk_el, :tvk12, :tvk21, :tvVc, :tvw0),\n    samples = 1000\n)\n\n\n\n\n7.3 Model with @observed Block (Required for GSA)\n\n\nShow/Hide Code\ngsa_model = @model begin\n    # ... @param, @pre, @init, @vars, @dynamics blocks ...\n\n    @derived begin\n        tumor_obs = @. tumor\n    end\n\n    # Scalar endpoints for GSA (required for Sobol analysis)\n    @observed begin\n        final_tumor = last(tumor_obs)\n    end\nend"
+  },
+  {
+    "objectID": "03_SensitivityAnalysis.html#hands-on-exercises",
+    "href": "03_SensitivityAnalysis.html#hands-on-exercises",
+    "title": "Sensitivity Analysis: LSA and GSA",
+    "section": "8 Hands-On Exercises",
+    "text": "8 Hands-On Exercises\nThe complete implementations are available in:\n\n📁 Handson/LocalSensitivityAnalysis.jl - LSA with tornado plot visualization\n📁 Handson/GlobalSensitivityAnalysis.jl - GSA with Sobol indices\n\n\n8.1 Exercise Ideas\n\nChange Perturbation Range: Run LSA with ±25% instead of ±50%. How do sensitivity rankings change?\nDifferent Endpoint: Modify the code to analyze tumor weight at Day 50 instead of Day 30. Which parameters become more/less important?\nAdd PK Parameters: Include \\(V_c\\) and \\(k_{el}\\) in the sensitivity analysis. How do PK parameters compare to PD parameters?\nSample Size Effect: Run GSA with 500 vs 2000 samples. How do confidence intervals change?\nInteraction Analysis: For treated groups, calculate ST - S1 for each parameter. Which parameters show the strongest interactions?"
+  }
+]
