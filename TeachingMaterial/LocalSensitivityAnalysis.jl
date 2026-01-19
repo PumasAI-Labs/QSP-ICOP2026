@@ -1,9 +1,9 @@
 #=
 ================================================================================
-LOCAL SENSITIVITY ANALYSIS - Simeoni Model
+LOCAL SENSITIVITY ANALYSIS (LSA) - Simeoni Model
 ================================================================================
 
-This script performs Local Sensitivity Analysis (LSA) on the Simeoni TGI model:
+This script performs Local Sensitivity Analysis on the Simeoni TGI model:
 - ±50% perturbation of PD parameters
 - Endpoint: Tumor weight at day 30
 - 3 dose groups: Control, 45 mg/kg, 60 mg/kg
@@ -20,6 +20,7 @@ using Pumas
 using AlgebraOfGraphics, CairoMakie
 using DataFramesMeta
 using PumasUtilities
+using CSV
 
 set_aog_theme!()
 
@@ -127,8 +128,8 @@ subject_60mg = Subject(id = "60mgkg", events = dr_60mg, time = time_grid)
 
 dose_groups = [
     (name = "Control", subject = subject_control),
-    (name = "45 mgkg", subject = subject_45mg),
-    (name = "60 mgkg", subject = subject_60mg)
+    (name = "45 mg/kg", subject = subject_45mg),
+    (name = "60 mg/kg", subject = subject_60mg)
 ]
 
 println("\nSubjects created for 3 dose groups: Control, 45 mg/kg, 60 mg/kg")
@@ -154,9 +155,9 @@ baseline_params = (
     tvlambda0 = 0.12441,     # λ₀: Exponential growth rate (day⁻¹)
     tvlambda1 = 0.34511,     # λ₁: Linear growth rate (g/day)
     tvk1 = 0.81905,          # k₁: Transit rate constant (day⁻¹)
-    tvk2 = 0.00074522,         # k₂: Drug potency (mL/ng/day)
-    tvw0 = 0.085,          # w₀: Initial tumor weight (g)
-    psi = 20.0             # ψ: Growth transition smoothing
+    tvk2 = 0.00074522,       # k₂: Drug potency (mL/ng/day)
+    tvw0 = 0.085,            # w₀: Initial tumor weight (g)
+    psi = 20.0               # ψ: Growth transition smoothing
 )
 
 # Parameters to analyze (matching MATLAB LSA_script.m)
@@ -306,7 +307,7 @@ global_max_change = maximum([
 fig = Figure(size = (1400, 500), fontsize = 12)
 
 # Add overall title
-Label(fig[0, 1:3], "Sensitivity Analysis", fontsize = 18, font = :bold)
+Label(fig[0, 1:3], "Local Sensitivity Analysis", fontsize = 18, font = :bold)
 
 for (idx, group) in enumerate(dose_groups)
     # Filter data for this dose group and apply consistent ordering
@@ -378,7 +379,7 @@ println("  Saved: outputs/lsa_sensitivity_table.csv")
 # ==============================================================================
 
 println("\n" * "="^60)
-println("SENSITIVITY ANALYSIS RESULTS SUMMARY")
+println("LSA RESULTS SUMMARY")
 println("="^60)
 
 # Summary table per dose group
@@ -433,5 +434,5 @@ This analysis helps identify which parameters are most important for:
 """)
 
 println("\n" * "="^60)
-println("SENSITIVITY ANALYSIS COMPLETE")
+println("LOCAL SENSITIVITY ANALYSIS COMPLETE")
 println("="^60)
