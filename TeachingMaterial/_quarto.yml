@@ -1,0 +1,38 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "ICOP 2026 QSP Workshop"
+  description: "Tumor Growth Inhibition Modeling with Pumas"
+  navbar:
+    background: primary
+    logo: "https://pumas-assets.s3.amazonaws.com/CompanyLogos/PumasAI/RGB/PNG/Pumas+AI+Primary%404x.png"
+    logo-alt: "Pumas AI"
+    left:
+      - href: index.qmd
+        text: Home
+      - href: 01_SimeoniModel.qmd
+        text: "1. Model Building"
+      - href: 02_ParameterEstimation.qmd
+        text: "2. Estimation"
+      - href: 03_SensitivityAnalysis.qmd
+        text: "3. Sensitivity"
+    right:
+      - icon: github
+        href: https://github.com/pumasAI/education
+        aria-label: GitHub
+  page-footer:
+    left: |
+      ICOP 2026 Pre-Conference Workshop<br/>
+      Pumas AI
+    right: |
+      License: CC BY-SA 4.0
+
+format:
+  html:
+    theme: default
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    code-tools: true

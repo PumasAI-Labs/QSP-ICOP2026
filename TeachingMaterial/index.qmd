@@ -1,0 +1,288 @@
+---
+title: "Quantitative Systems Pharmacology Workshop"
+subtitle: "Tumor Growth Inhibition Modeling with Pumas"
+author: "ICOP 2026 Pre-Conference Workshop"
+julia:
+    exeflags: ["+Pumas@2.7.1"]
+execute:
+  echo: true
+  cache: true
+  error: false
+format:
+  html:
+    include-in-header:
+      text: |
+        <style>
+          .header-container {
+            width: 100%;
+          }
+          .logo {
+            display: block;
+            width: 150px;
+            margin-left: -2.5%;
+          }
+          .session-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5em;
+            margin: 1em 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          }
+          .session-card h3 {
+            margin-top: 0;
+            color: #0066cc;
+          }
+          .time-badge {
+            background-color: #0066cc;
+            color: white;
+            padding: 0.25em 0.75em;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-weight: bold;
+          }
+          .agenda-table {
+            width: 100%;
+            border-collapse: collapse;
+          }
+          .agenda-table th {
+            background-color: #0066cc;
+            color: white;
+            padding: 12px;
+            text-align: left;
+          }
+          .agenda-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+          }
+          .agenda-table tr:hover {
+            background-color: #f5f5f5;
+          }
+        </style>
+        <link rel = "shortcut icon" href = "https://pumas.ai/favicon.ico" />
+    include-before-body:
+      text: |
+        <div class="header-container">
+          <img src="https://pumas-assets.s3.amazonaws.com/CompanyLogos/PumasAI/RGB/PNG/Pumas+AI+Primary%404x.png" alt="Pumas Logo" class="logo">
+        </div>
+    self-contained-math: true
+    anchor-sections: true
+    theme: default
+    toc: true
+    toc-depth: 3
+    toc-expand: 2
+    toc-location: left
+    toc-title: Contents
+    number-sections: false
+    code-summary: Show/Hide Code
+embed-resources: true
+fig-format: svg
+fig-width: 8
+fig-height: 6
+license: CC BY-SA 4.0
+---
+
+## Welcome
+
+Welcome to the **ICOP 2026 Pre-Conference Workshop** on Quantitative Systems Pharmacology (QSP) modeling. This hands-on workshop introduces the Simeoni tumor growth inhibition (TGI) model using Julia and the Pumas ecosystem.
+
+By the end of this workshop, you will be able to:
+
+- Build mechanistic PK-PD models using the Pumas domain-specific language
+- Estimate model parameters from experimental data
+- Simulate dose-response scenarios to optimize treatment schedules
+- Perform local and global sensitivity analysis to understand parameter influence
+
+---
+
+## Workshop Overview
+
+### The Simeoni Model
+
+The Simeoni TGI model is a mechanistic framework that describes:
+
+1. **Two-compartment pharmacokinetics** - Drug distribution and elimination
+2. **Tumor growth dynamics** - Exponential to linear growth transition
+3. **Drug-induced cell damage** - Transit compartment model for cell death
+
+This model has become a standard tool for preclinical-to-clinical translation in oncology drug development.
+
+### Why Pumas?
+
+[Pumas](https://pumas.ai) is a comprehensive platform for pharmaceutical modeling and simulation that provides:
+
+- **Expressive DSL** - Intuitive syntax for defining complex models
+- **High performance** - Julia-based computation for fast simulations
+- **Integrated workflows** - Seamless estimation, simulation, and analysis
+- **Sensitivity analysis** - Built-in support for LSA and GSA methods
+
+---
+
+## Workshop Agenda
+
+This is a **4-hour workshop** with three main sessions plus breaks for hands-on exercises.
+
+<table class="agenda-table">
+<thead>
+<tr>
+<th style="width: 15%">Time</th>
+<th style="width: 25%">Session</th>
+<th style="width: 60%">Topics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0:00 - 0:15</strong></td>
+<td>Welcome & Setup</td>
+<td>Introduction, environment check, workshop overview</td>
+</tr>
+<tr>
+<td><strong>0:15 - 1:15</strong></td>
+<td><a href="01_SimeoniModel.html">Session 1: Model Building</a></td>
+<td>
+• Biological motivation for the Simeoni model<br/>
+• Mathematical formulation (PK + PD)<br/>
+• Pumas DSL: @param, @pre, @init, @vars, @dynamics, @derived<br/>
+• Simulation and visualization
+</td>
+</tr>
+<tr>
+<td><strong>1:15 - 1:30</strong></td>
+<td>Break</td>
+<td>Hands-on: Modify model parameters and observe effects</td>
+</tr>
+<tr>
+<td><strong>1:30 - 2:30</strong></td>
+<td><a href="02_ParameterEstimation.html">Session 2: Parameter Estimation</a></td>
+<td>
+• PK estimation with error model selection<br/>
+• PKPD estimation with fixed PK parameters<br/>
+• Model diagnostics and goodness-of-fit<br/>
+• Dose-response simulation scenarios (Q3W to Q4D)
+</td>
+</tr>
+<tr>
+<td><strong>2:30 - 2:45</strong></td>
+<td>Break</td>
+<td>Hands-on: Design your own dosing scenario</td>
+</tr>
+<tr>
+<td><strong>2:45 - 3:45</strong></td>
+<td><a href="03_SensitivityAnalysis.html">Session 3: Sensitivity Analysis</a></td>
+<td>
+• Local sensitivity analysis (LSA) methodology<br/>
+• Tornado plot interpretation<br/>
+• Global sensitivity analysis (GSA) with Sobol indices<br/>
+• Comparing S1 and ST indices
+</td>
+</tr>
+<tr>
+<td><strong>3:45 - 4:00</strong></td>
+<td>Wrap-up & Q&A</td>
+<td>Key takeaways, additional resources, discussion</td>
+</tr>
+</tbody>
+</table>
+
+---
+
+## Session Materials
+
+::: {.session-card}
+### Session 1: The Simeoni Tumor Growth Inhibition Model
+
+<span class="time-badge">60 minutes</span>
+
+Learn the biological basis and mathematical formulation of the Simeoni TGI model. Build a complete PK-PD model in Pumas and simulate tumor response across multiple dose levels.
+
+**Topics covered:**
+
+- Exponential → linear tumor growth transition
+- Transit compartment model for drug-induced cell death
+- 2-compartment PK with micro-rate parameterization
+- Pumas model blocks and simulation workflow
+
+[**Go to Session 1 →**](01_SimeoniModel.html)
+:::
+
+::: {.session-card}
+### Session 2: Parameter Estimation and Dose-Response Analysis
+
+<span class="time-badge">60 minutes</span>
+
+Estimate model parameters from experimental data using the two-stage approach. Explore how dosing frequency affects tumor control through simulation scenarios.
+
+**Topics covered:**
+
+- Additive vs proportional error models
+- NaivePooled estimation approach
+- Fixing PK parameters for PD estimation
+- Dose-exposure-response relationships (Q3W, Q2W, QW, Q4D)
+
+[**Go to Session 2 →**](02_ParameterEstimation.html)
+:::
+
+::: {.session-card}
+### Session 3: Sensitivity Analysis (LSA and GSA)
+
+<span class="time-badge">60 minutes</span>
+
+Quantify parameter influence on model predictions using local and global sensitivity analysis. Understand which parameters drive tumor growth and treatment response.
+
+**Topics covered:**
+
+- One-at-a-time perturbation (LSA)
+- Sobol variance-based indices (GSA)
+- First-order (S1) vs total-order (ST) effects
+- Parameter interactions and biological interpretation
+
+[**Go to Session 3 →**](03_SensitivityAnalysis.html)
+:::
+
+---
+
+## Hands-On Scripts
+
+All workshop code is available in the `Handson/` directory:
+
+| Script | Description |
+|--------|-------------|
+| `SimeoneModel.jl` | Complete model building and simulation |
+| `PKestimation.jl` | PK parameter estimation with model comparison |
+| `PKPDestimation.jl` | PKPD estimation with fixed PK |
+| `SimulationScenarios.jl` | Dose-response scenario simulations |
+| `LocalSensitivityAnalysis.jl` | LSA with tornado plots |
+| `GlobalSensitivityAnalysis.jl` | GSA with Sobol indices |
+
+---
+
+## Prerequisites
+
+### Software Requirements
+
+- **Julia 1.10+** with Pumas environment
+- Required packages: `Pumas`, `PumasUtilities`, `AlgebraOfGraphics`, `CairoMakie`, `DataFramesMeta`, `CSV`, `GlobalSensitivity`
+
+### Background Knowledge
+
+- Basic understanding of pharmacokinetics (compartmental models)
+- Familiarity with differential equations (conceptual)
+- Some programming experience (Julia or similar)
+
+---
+
+## Reference
+
+**Primary Reference:**
+
+Simeoni M, Magni P, Cammia C, De Nicolao G, Croci V, Pesenti E, Germani M, Poggesi I, Rocchetti M. (2004) "Predictive Pharmacokinetic-Pharmacodynamic Modeling of Tumor Growth Kinetics in Xenograft Models after Administration of Anticancer Agents." *Cancer Research* 64:1094-1101.
+
+---
+
+## Contact
+
+For questions about this workshop or the Pumas platform, please contact:
+
+- **Workshop Materials**: [GitHub Repository](https://github.com/pumasAI/education)
+- **Pumas Documentation**: [docs.pumas.ai](https://docs.pumas.ai)
+- **Pumas Support**: [support@pumas.ai](mailto:support@pumas.ai)
