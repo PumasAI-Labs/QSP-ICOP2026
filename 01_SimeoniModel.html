@@ -6631,7 +6631,6 @@ window.Quarto = {
 <li>Predict human tumor response based on preclinical data</li>
 </ul>
 <p>The Simeoni model provides a mathematical framework to quantify these relationships and support translational predictions.</p>
-<hr>
 </section>
 </section>
 <section id="biological-motivation" class="level2" data-number="2">
@@ -6654,7 +6653,6 @@ window.Quarto = {
 <li>This delay between damage and cell death reflects biological reality (apoptosis is not instantaneous)</li>
 <li>The transit compartment approach captures the distribution of cell death times</li>
 </ol>
-<hr>
 </section>
 </section>
 <section id="mathematical-formulation" class="level2" data-number="3">
@@ -6744,7 +6742,6 @@ window.Quarto = {
 <p>The total tumor weight at any time is: <span class="math inline">\(w = x_1 + x_2 + x_3 + x_4\)</span></p>
 <p>The growth term uses the same Simeoni equation but applied to proliferating cells:</p>
 <p><span class="math display">\[\text{growth} = \frac{\lambda_0 \cdot x_1}{\left[1 + \left(\frac{\lambda_0}{\lambda_1} \cdot w\right)^\psi\right]^{1/\psi}}\]</span></p>
-<hr>
 </section>
 </section>
 <section id="pharmacokinetic-model" class="level2" data-number="4">
@@ -6787,7 +6784,6 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<hr>
 </section>
 </section>
 <section id="model-schematic" class="level2" data-number="5">
@@ -6833,7 +6829,6 @@ flowchart TB
 </div>
 </div>
 </div>
-<hr>
 </section>
 <section id="simulation-results" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="simulation-results"><span class="header-section-number">6</span> Simulation Results</h2>
@@ -6870,7 +6865,6 @@ flowchart TB
 <li><strong>60 mg/kg</strong>: Greater tumor suppression; tumor growth is substantially inhibited</li>
 <li>Both treated groups show tumor recovery after drug washout (single dose)</li>
 </ul>
-<hr>
 </section>
 </section>
 <section id="pumas-implementation-highlights" class="level2" data-number="7">
@@ -6936,7 +6930,6 @@ flowchart TB
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<hr>
 </section>
 </section>
 <section id="summary-model-parameters" class="level2" data-number="8">
@@ -7013,7 +7006,6 @@ flowchart TB
 </tr>
 </tbody>
 </table>
-<hr>
 </section>
 <section id="hands-on-exercise" class="level2" data-number="9">
 <h2 data-number="9" class="anchored" data-anchor-id="hands-on-exercise"><span class="header-section-number">9</span> Hands-On Exercise</h2>
@@ -7547,279 +7539,263 @@ flowchart TB
 <span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>The Simeoni model provides a mathematical framework to quantify these relationships and support translational predictions.</span>
 <span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a><span class="fu">## Biological Motivation</span></span>
 <span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a><span class="fu">## Biological Motivation</span></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a><span class="fu">### Unperturbed Tumor Growth</span></span>
 <span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a><span class="fu">### Unperturbed Tumor Growth</span></span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>Tumor growth in the absence of treatment follows a characteristic pattern:</span>
 <span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>Tumor growth in the absence of treatment follows a characteristic pattern:</span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Early stage (exponential growth)**: When the tumor is small, cells have unlimited access to nutrients and oxygen. The tumor mass doubles at a constant rate, leading to exponential growth.</span>
 <span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Early stage (exponential growth)**: When the tumor is small, cells have unlimited access to nutrients and oxygen. The tumor mass doubles at a constant rate, leading to exponential growth.</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Late stage (linear growth)**: As the tumor grows larger, the interior becomes nutrient-limited. Only the outer rim of cells actively proliferates, resulting in linear (rather than exponential) growth.</span>
 <span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Late stage (linear growth)**: As the tumor grows larger, the interior becomes nutrient-limited. Only the outer rim of cells actively proliferates, resulting in linear (rather than exponential) growth.</span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Smooth transition**: The transition between these phases is gradual, not abrupt. The Simeoni model captures this with a smooth mathematical transition function.</span>
 <span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Smooth transition**: The transition between these phases is gradual, not abrupt. The Simeoni model captures this with a smooth mathematical transition function.</span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a><span class="fu">### Drug-Induced Cell Damage</span></span>
 <span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a><span class="fu">### Drug-Induced Cell Damage</span></span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>When an anticancer drug is administered:</span>
 <span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>When an anticancer drug is administered:</span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>The drug damages proliferating tumor cells</span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Damaged cells do not die immediately but progress through a series of transit compartments</span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>This delay between damage and cell death reflects biological reality (apoptosis is not instantaneous)</span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>The transit compartment approach captures the distribution of cell death times</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>The drug damages proliferating tumor cells</span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Damaged cells do not die immediately but progress through a series of transit compartments</span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>This delay between damage and cell death reflects biological reality (apoptosis is not instantaneous)</span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>The transit compartment approach captures the distribution of cell death times</span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a><span class="fu">## Mathematical Formulation</span></span>
 <span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="fu">### Unperturbed Growth Equation</span></span>
 <span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="fu">## Mathematical Formulation</span></span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>The Simeoni model describes tumor growth using:</span>
 <span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a><span class="fu">### Unperturbed Growth Equation</span></span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>$$\frac{dw}{dt} = \frac{\lambda_0 \cdot w}{\left<span class="co">[</span><span class="ot">1 + \left(\frac{\lambda_0}{\lambda_1} \cdot w\right)^\psi\right</span><span class="co">]</span>^{1/\psi}}$$</span>
 <span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>The Simeoni model describes tumor growth using:</span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>where:</span>
 <span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>$$\frac{dw}{dt} = \frac{\lambda_0 \cdot w}{\left<span class="co">[</span><span class="ot">1 + \left(\frac{\lambda_0}{\lambda_1} \cdot w\right)^\psi\right</span><span class="co">]</span>^{1/\psi}}$$</span>
-<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>where:</span>
-<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Symbol <span class="pp">|</span> Description <span class="pp">|</span> Units <span class="pp">|</span></span>
-<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------|-------------|-------|</span></span>
-<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $w$ <span class="pp">|</span> Tumor weight <span class="pp">|</span> g <span class="pp">|</span></span>
-<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $\lambda_0$ <span class="pp">|</span> Exponential growth rate <span class="pp">|</span> day$^{-1}$ <span class="pp">|</span></span>
-<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $\lambda_1$ <span class="pp">|</span> Linear growth rate <span class="pp">|</span> g/day <span class="pp">|</span></span>
-<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $\psi$ <span class="pp">|</span> Transition sharpness <span class="pp">|</span> dimensionless <span class="pp">|</span></span>
-<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>**Limiting behavior**:</span>
-<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>When $w$ is small: $\frac{dw}{dt} \approx \lambda_0 \cdot w$ (exponential growth)</span>
-<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>When $w$ is large: $\frac{dw}{dt} \approx \lambda_1$ (linear growth)</span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Symbol <span class="pp">|</span> Description <span class="pp">|</span> Units <span class="pp">|</span></span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------|-------------|-------|</span></span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $w$ <span class="pp">|</span> Tumor weight <span class="pp">|</span> g <span class="pp">|</span></span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $\lambda_0$ <span class="pp">|</span> Exponential growth rate <span class="pp">|</span> day$^{-1}$ <span class="pp">|</span></span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $\lambda_1$ <span class="pp">|</span> Linear growth rate <span class="pp">|</span> g/day <span class="pp">|</span></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $\psi$ <span class="pp">|</span> Transition sharpness <span class="pp">|</span> dimensionless <span class="pp">|</span></span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>**Limiting behavior**:</span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>When $w$ is small: $\frac{dw}{dt} \approx \lambda_0 \cdot w$ (exponential growth)</span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>When $w$ is large: $\frac{dw}{dt} \approx \lambda_1$ (linear growth)</span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>The parameter $\psi$ (typically fixed at 20) controls how sharply the transition occurs. Higher values create a more abrupt switch between growth phases.</span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a><span class="fu">### Drug-Perturbed Dynamics</span></span>
 <span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a>The parameter $\psi$ (typically fixed at 20) controls how sharply the transition occurs. Higher values create a more abrupt switch between growth phases.</span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a>When drug is present, the model uses four compartments to track tumor cells:</span>
 <span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a><span class="fu">### Drug-Perturbed Dynamics</span></span>
-<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a>When drug is present, the model uses four compartments to track tumor cells:</span>
-<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**x₁**: Proliferating (drug-sensitive) cells</span>
-<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**x₂, x₃, x₄**: Damaged cells progressing through transit compartments toward death</span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**x₁**: Proliferating (drug-sensitive) cells</span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**x₂, x₃, x₄**: Damaged cells progressing through transit compartments toward death</span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a>The ODE system becomes:</span>
+<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a>$$\frac{dx_1}{dt} = \text{growth} - k_2 \cdot c(t) \cdot x_1$$</span>
 <span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a>The ODE system becomes:</span>
+<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a>$$\frac{dx_2}{dt} = k_2 \cdot c(t) \cdot x_1 - k_1 \cdot x_2$$</span>
 <span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a>$$\frac{dx_1}{dt} = \text{growth} - k_2 \cdot c(t) \cdot x_1$$</span>
+<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a>$$\frac{dx_3}{dt} = k_1 \cdot (x_2 - x_3)$$</span>
 <span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a>$$\frac{dx_2}{dt} = k_2 \cdot c(t) \cdot x_1 - k_1 \cdot x_2$$</span>
+<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a>$$\frac{dx_4}{dt} = k_1 \cdot (x_3 - x_4)$$</span>
 <span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a>$$\frac{dx_3}{dt} = k_1 \cdot (x_2 - x_3)$$</span>
+<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a>where:</span>
 <span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a>$$\frac{dx_4}{dt} = k_1 \cdot (x_3 - x_4)$$</span>
-<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a>where:</span>
-<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Symbol <span class="pp">|</span> Description <span class="pp">|</span> Units <span class="pp">|</span></span>
-<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------|-------------|-------|</span></span>
-<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k_2$ <span class="pp">|</span> Drug potency <span class="pp">|</span> mL/(ng·day) <span class="pp">|</span></span>
-<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k_1$ <span class="pp">|</span> Transit rate constant <span class="pp">|</span> day$^{-1}$ <span class="pp">|</span></span>
-<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $c(t)$ <span class="pp">|</span> Plasma drug concentration <span class="pp">|</span> ng/mL <span class="pp">|</span></span>
+<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Symbol <span class="pp">|</span> Description <span class="pp">|</span> Units <span class="pp">|</span></span>
+<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------|-------------|-------|</span></span>
+<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k_2$ <span class="pp">|</span> Drug potency <span class="pp">|</span> mL/(ng·day) <span class="pp">|</span></span>
+<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k_1$ <span class="pp">|</span> Transit rate constant <span class="pp">|</span> day$^{-1}$ <span class="pp">|</span></span>
+<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $c(t)$ <span class="pp">|</span> Plasma drug concentration <span class="pp">|</span> ng/mL <span class="pp">|</span></span>
+<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a>The total tumor weight at any time is: $w = x_1 + x_2 + x_3 + x_4$</span>
+<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a>The growth term uses the same Simeoni equation but applied to proliferating cells:</span>
 <span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a>The total tumor weight at any time is: $w = x_1 + x_2 + x_3 + x_4$</span>
+<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a>$$\text{growth} = \frac{\lambda_0 \cdot x_1}{\left<span class="co">[</span><span class="ot">1 + \left(\frac{\lambda_0}{\lambda_1} \cdot w\right)^\psi\right</span><span class="co">]</span>^{1/\psi}}$$</span>
 <span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a>The growth term uses the same Simeoni equation but applied to proliferating cells:</span>
+<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pharmacokinetic Model</span></span>
 <span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a>$$\text{growth} = \frac{\lambda_0 \cdot x_1}{\left<span class="co">[</span><span class="ot">1 + \left(\frac{\lambda_0}{\lambda_1} \cdot w\right)^\psi\right</span><span class="co">]</span>^{1/\psi}}$$</span>
+<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a>The drug concentration is described by a 2-compartment PK model with micro-rate constant parameterization:</span>
 <span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a>$$\frac{d(\text{Central})}{dt} = -k_{el} \cdot \text{Central} - k_{12} \cdot \text{Central} + k_{21} \cdot \text{Peripheral}$$</span>
 <span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pharmacokinetic Model</span></span>
+<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a>$$\frac{d(\text{Peripheral})}{dt} = k_{12} \cdot \text{Central} - k_{21} \cdot \text{Peripheral}$$</span>
 <span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a>The drug concentration is described by a 2-compartment PK model with micro-rate constant parameterization:</span>
+<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a>The plasma concentration is calculated as:</span>
 <span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a>$$\frac{d(\text{Central})}{dt} = -k_{el} \cdot \text{Central} - k_{12} \cdot \text{Central} + k_{21} \cdot \text{Peripheral}$$</span>
+<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a>$$c_p = \frac{\text{Central}}{V_c} \times 1000 \quad \text{(ng/mL)}$$</span>
 <span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a>$$\frac{d(\text{Peripheral})}{dt} = k_{12} \cdot \text{Central} - k_{21} \cdot \text{Peripheral}$$</span>
+<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a><span class="fu">### PK Parameters</span></span>
 <span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a>The plasma concentration is calculated as:</span>
-<span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a>$$c_p = \frac{\text{Central}}{V_c} \times 1000 \quad \text{(ng/mL)}$$</span>
-<span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a><span class="fu">### PK Parameters</span></span>
-<span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Parameter <span class="pp">|</span> Description <span class="pp">|</span> Units <span class="pp">|</span></span>
-<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a><span class="pp">|-----------|-------------|-------|</span></span>
-<span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k_{el}$ <span class="pp">|</span> Elimination rate constant <span class="pp">|</span> day$^{-1}$ <span class="pp">|</span></span>
-<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k_{12}$ <span class="pp">|</span> Central → Peripheral rate <span class="pp">|</span> day$^{-1}$ <span class="pp">|</span></span>
-<span id="cb4-165"><a href="#cb4-165" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k_{21}$ <span class="pp">|</span> Peripheral → Central rate <span class="pp">|</span> day$^{-1}$ <span class="pp">|</span></span>
-<span id="cb4-166"><a href="#cb4-166" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $V_c$ <span class="pp">|</span> Central volume <span class="pp">|</span> L <span class="pp">|</span></span>
-<span id="cb4-167"><a href="#cb4-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-168"><a href="#cb4-168" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-169"><a href="#cb4-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-170"><a href="#cb4-170" aria-hidden="true" tabindex="-1"></a><span class="fu">## Model Schematic</span></span>
-<span id="cb4-171"><a href="#cb4-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-172"><a href="#cb4-172" aria-hidden="true" tabindex="-1"></a>The complete PK-PD model structure:</span>
-<span id="cb4-173"><a href="#cb4-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-176"><a href="#cb4-176" aria-hidden="true" tabindex="-1"></a><span class="in">```{mermaid}</span></span>
-<span id="cb4-177"><a href="#cb4-177" aria-hidden="true" tabindex="-1"></a>%%| echo: false</span>
-<span id="cb4-178"><a href="#cb4-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-179"><a href="#cb4-179" aria-hidden="true" tabindex="-1"></a>%%| fig-width: <span class="dv">10</span></span>
-<span id="cb4-180"><a href="#cb4-180" aria-hidden="true" tabindex="-1"></a>flowchart TB</span>
-<span id="cb4-181"><a href="#cb4-181" aria-hidden="true" tabindex="-1"></a>    subgraph PK[<span class="ot">&quot;</span><span class="st">&lt;b&gt;PHARMACOKINETICS&lt;/b&gt;</span><span class="ot">&quot;</span>]</span>
-<span id="cb4-182"><a href="#cb4-182" aria-hidden="true" tabindex="-1"></a>        direction LR</span>
-<span id="cb4-183"><a href="#cb4-183" aria-hidden="true" tabindex="-1"></a>        Dose([<span class="ot">&quot;</span><span class="st"> Dose </span><span class="ot">&quot;</span>]) --&gt; Central[<span class="ot">&quot;</span><span class="st">Central&lt;br/&gt;(Amount)</span><span class="ot">&quot;</span>]</span>
-<span id="cb4-184"><a href="#cb4-184" aria-hidden="true" tabindex="-1"></a>        Central -- <span class="ot">&quot;</span><span class="st">k&lt;sub&gt;12&lt;/sub&gt;</span><span class="ot">&quot;</span> --&gt; Peripheral[<span class="ot">&quot;</span><span class="st">Peripheral&lt;br/&gt;(Amount)</span><span class="ot">&quot;</span>]</span>
-<span id="cb4-185"><a href="#cb4-185" aria-hidden="true" tabindex="-1"></a>        Peripheral -- <span class="ot">&quot;</span><span class="st">k&lt;sub&gt;21&lt;/sub&gt;</span><span class="ot">&quot;</span> --&gt; Central</span>
-<span id="cb4-186"><a href="#cb4-186" aria-hidden="true" tabindex="-1"></a>        Central -- <span class="ot">&quot;</span><span class="st">k&lt;sub&gt;el&lt;/sub&gt;</span><span class="ot">&quot;</span> --&gt; Elim((<span class="ot">&quot;</span><span class="st"> </span><span class="ot">&quot;</span>))</span>
-<span id="cb4-187"><a href="#cb4-187" aria-hidden="true" tabindex="-1"></a>    end</span>
-<span id="cb4-188"><a href="#cb4-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-189"><a href="#cb4-189" aria-hidden="true" tabindex="-1"></a>    Central -.-&gt; |<span class="ot">&quot;</span><span class="st">c&lt;sub&gt;p&lt;/sub&gt; = Central/V&lt;sub&gt;c&lt;/sub&gt; × 1000</span><span class="ot">&quot;</span>| x1</span>
+<span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Parameter <span class="pp">|</span> Description <span class="pp">|</span> Units <span class="pp">|</span></span>
+<span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a><span class="pp">|-----------|-------------|-------|</span></span>
+<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k_{el}$ <span class="pp">|</span> Elimination rate constant <span class="pp">|</span> day$^{-1}$ <span class="pp">|</span></span>
+<span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k_{12}$ <span class="pp">|</span> Central → Peripheral rate <span class="pp">|</span> day$^{-1}$ <span class="pp">|</span></span>
+<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k_{21}$ <span class="pp">|</span> Peripheral → Central rate <span class="pp">|</span> day$^{-1}$ <span class="pp">|</span></span>
+<span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $V_c$ <span class="pp">|</span> Central volume <span class="pp">|</span> L <span class="pp">|</span></span>
+<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a><span class="fu">## Model Schematic</span></span>
+<span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a>The complete PK-PD model structure:</span>
+<span id="cb4-165"><a href="#cb4-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-168"><a href="#cb4-168" aria-hidden="true" tabindex="-1"></a><span class="in">```{mermaid}</span></span>
+<span id="cb4-169"><a href="#cb4-169" aria-hidden="true" tabindex="-1"></a>%%| echo: false</span>
+<span id="cb4-170"><a href="#cb4-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-171"><a href="#cb4-171" aria-hidden="true" tabindex="-1"></a>%%| fig-width: <span class="dv">10</span></span>
+<span id="cb4-172"><a href="#cb4-172" aria-hidden="true" tabindex="-1"></a>flowchart TB</span>
+<span id="cb4-173"><a href="#cb4-173" aria-hidden="true" tabindex="-1"></a>    subgraph PK[<span class="ot">&quot;</span><span class="st">&lt;b&gt;PHARMACOKINETICS&lt;/b&gt;</span><span class="ot">&quot;</span>]</span>
+<span id="cb4-174"><a href="#cb4-174" aria-hidden="true" tabindex="-1"></a>        direction LR</span>
+<span id="cb4-175"><a href="#cb4-175" aria-hidden="true" tabindex="-1"></a>        Dose([<span class="ot">&quot;</span><span class="st"> Dose </span><span class="ot">&quot;</span>]) --&gt; Central[<span class="ot">&quot;</span><span class="st">Central&lt;br/&gt;(Amount)</span><span class="ot">&quot;</span>]</span>
+<span id="cb4-176"><a href="#cb4-176" aria-hidden="true" tabindex="-1"></a>        Central -- <span class="ot">&quot;</span><span class="st">k&lt;sub&gt;12&lt;/sub&gt;</span><span class="ot">&quot;</span> --&gt; Peripheral[<span class="ot">&quot;</span><span class="st">Peripheral&lt;br/&gt;(Amount)</span><span class="ot">&quot;</span>]</span>
+<span id="cb4-177"><a href="#cb4-177" aria-hidden="true" tabindex="-1"></a>        Peripheral -- <span class="ot">&quot;</span><span class="st">k&lt;sub&gt;21&lt;/sub&gt;</span><span class="ot">&quot;</span> --&gt; Central</span>
+<span id="cb4-178"><a href="#cb4-178" aria-hidden="true" tabindex="-1"></a>        Central -- <span class="ot">&quot;</span><span class="st">k&lt;sub&gt;el&lt;/sub&gt;</span><span class="ot">&quot;</span> --&gt; Elim((<span class="ot">&quot;</span><span class="st"> </span><span class="ot">&quot;</span>))</span>
+<span id="cb4-179"><a href="#cb4-179" aria-hidden="true" tabindex="-1"></a>    end</span>
+<span id="cb4-180"><a href="#cb4-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-181"><a href="#cb4-181" aria-hidden="true" tabindex="-1"></a>    Central -.-&gt; |<span class="ot">&quot;</span><span class="st">c&lt;sub&gt;p&lt;/sub&gt; = Central/V&lt;sub&gt;c&lt;/sub&gt; × 1000</span><span class="ot">&quot;</span>| x1</span>
+<span id="cb4-182"><a href="#cb4-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-183"><a href="#cb4-183" aria-hidden="true" tabindex="-1"></a>    subgraph PD[<span class="ot">&quot;</span><span class="st">&lt;b&gt;PHARMACODYNAMICS&lt;/b&gt;</span><span class="ot">&quot;</span>]</span>
+<span id="cb4-184"><a href="#cb4-184" aria-hidden="true" tabindex="-1"></a>        direction LR</span>
+<span id="cb4-185"><a href="#cb4-185" aria-hidden="true" tabindex="-1"></a>        x1[<span class="ot">&quot;</span><span class="st">x₁&lt;br/&gt;(Proliferating)</span><span class="ot">&quot;</span>] -- <span class="ot">&quot;</span><span class="st">k₂·c&lt;sub&gt;p&lt;/sub&gt;</span><span class="ot">&quot;</span> --&gt; x2[<span class="ot">&quot;</span><span class="st">x₂&lt;br/&gt;(Damaged)</span><span class="ot">&quot;</span>]</span>
+<span id="cb4-186"><a href="#cb4-186" aria-hidden="true" tabindex="-1"></a>        x2 -- <span class="ot">&quot;</span><span class="st">k₁</span><span class="ot">&quot;</span> --&gt; x3[<span class="ot">&quot;</span><span class="st">x₃&lt;br/&gt;(Damaged)</span><span class="ot">&quot;</span>]</span>
+<span id="cb4-187"><a href="#cb4-187" aria-hidden="true" tabindex="-1"></a>        x3 -- <span class="ot">&quot;</span><span class="st">k₁</span><span class="ot">&quot;</span> --&gt; x4[<span class="ot">&quot;</span><span class="st">x₄&lt;br/&gt;(Damaged)</span><span class="ot">&quot;</span>]</span>
+<span id="cb4-188"><a href="#cb4-188" aria-hidden="true" tabindex="-1"></a>        x4 -- <span class="ot">&quot;</span><span class="st">k₁</span><span class="ot">&quot;</span> --&gt; Death((<span class="ot">&quot;</span><span class="st"> </span><span class="ot">&quot;</span>))</span>
+<span id="cb4-189"><a href="#cb4-189" aria-hidden="true" tabindex="-1"></a>    end</span>
 <span id="cb4-190"><a href="#cb4-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-191"><a href="#cb4-191" aria-hidden="true" tabindex="-1"></a>    subgraph PD[<span class="ot">&quot;</span><span class="st">&lt;b&gt;PHARMACODYNAMICS&lt;/b&gt;</span><span class="ot">&quot;</span>]</span>
-<span id="cb4-192"><a href="#cb4-192" aria-hidden="true" tabindex="-1"></a>        direction LR</span>
-<span id="cb4-193"><a href="#cb4-193" aria-hidden="true" tabindex="-1"></a>        x1[<span class="ot">&quot;</span><span class="st">x₁&lt;br/&gt;(Proliferating)</span><span class="ot">&quot;</span>] -- <span class="ot">&quot;</span><span class="st">k₂·c&lt;sub&gt;p&lt;/sub&gt;</span><span class="ot">&quot;</span> --&gt; x2[<span class="ot">&quot;</span><span class="st">x₂&lt;br/&gt;(Damaged)</span><span class="ot">&quot;</span>]</span>
-<span id="cb4-194"><a href="#cb4-194" aria-hidden="true" tabindex="-1"></a>        x2 -- <span class="ot">&quot;</span><span class="st">k₁</span><span class="ot">&quot;</span> --&gt; x3[<span class="ot">&quot;</span><span class="st">x₃&lt;br/&gt;(Damaged)</span><span class="ot">&quot;</span>]</span>
-<span id="cb4-195"><a href="#cb4-195" aria-hidden="true" tabindex="-1"></a>        x3 -- <span class="ot">&quot;</span><span class="st">k₁</span><span class="ot">&quot;</span> --&gt; x4[<span class="ot">&quot;</span><span class="st">x₄&lt;br/&gt;(Damaged)</span><span class="ot">&quot;</span>]</span>
-<span id="cb4-196"><a href="#cb4-196" aria-hidden="true" tabindex="-1"></a>        x4 -- <span class="ot">&quot;</span><span class="st">k₁</span><span class="ot">&quot;</span> --&gt; Death((<span class="ot">&quot;</span><span class="st"> </span><span class="ot">&quot;</span>))</span>
-<span id="cb4-197"><a href="#cb4-197" aria-hidden="true" tabindex="-1"></a>    end</span>
-<span id="cb4-198"><a href="#cb4-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-199"><a href="#cb4-199" aria-hidden="true" tabindex="-1"></a>    Tumor[<span class="ot">&quot;</span><span class="st">Tumor = x₁ + x₂ + x₃ + x₄</span><span class="ot">&quot;</span>] -.-&gt; |<span class="ot">&quot;</span><span class="st">growth</span><span class="ot">&quot;</span>| x1</span>
-<span id="cb4-200"><a href="#cb4-200" aria-hidden="true" tabindex="-1"></a>    x1 &amp; x2 &amp; x3 &amp; x4 -.-&gt; Tumor</span>
+<span id="cb4-191"><a href="#cb4-191" aria-hidden="true" tabindex="-1"></a>    Tumor[<span class="ot">&quot;</span><span class="st">Tumor = x₁ + x₂ + x₃ + x₄</span><span class="ot">&quot;</span>] -.-&gt; |<span class="ot">&quot;</span><span class="st">growth</span><span class="ot">&quot;</span>| x1</span>
+<span id="cb4-192"><a href="#cb4-192" aria-hidden="true" tabindex="-1"></a>    x1 &amp; x2 &amp; x3 &amp; x4 -.-&gt; Tumor</span>
+<span id="cb4-193"><a href="#cb4-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-194"><a href="#cb4-194" aria-hidden="true" tabindex="-1"></a>    style PK fill:<span class="co">#e6f3ff,stroke:#0066cc</span></span>
+<span id="cb4-195"><a href="#cb4-195" aria-hidden="true" tabindex="-1"></a>    style PD fill:<span class="co">#fff0e6,stroke:#cc6600</span></span>
+<span id="cb4-196"><a href="#cb4-196" aria-hidden="true" tabindex="-1"></a>    style Dose fill:<span class="co">#90EE90,stroke:#228B22</span></span>
+<span id="cb4-197"><a href="#cb4-197" aria-hidden="true" tabindex="-1"></a>    style Elim fill:<span class="co">#ffcccc,stroke:#cc0000</span></span>
+<span id="cb4-198"><a href="#cb4-198" aria-hidden="true" tabindex="-1"></a>    style Death fill:<span class="co">#ffcccc,stroke:#cc0000</span></span>
+<span id="cb4-199"><a href="#cb4-199" aria-hidden="true" tabindex="-1"></a>    style Tumor fill:<span class="co">#ffffcc,stroke:#999900</span></span>
+<span id="cb4-200"><a href="#cb4-200" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb4-201"><a href="#cb4-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-202"><a href="#cb4-202" aria-hidden="true" tabindex="-1"></a>    style PK fill:<span class="co">#e6f3ff,stroke:#0066cc</span></span>
-<span id="cb4-203"><a href="#cb4-203" aria-hidden="true" tabindex="-1"></a>    style PD fill:<span class="co">#fff0e6,stroke:#cc6600</span></span>
-<span id="cb4-204"><a href="#cb4-204" aria-hidden="true" tabindex="-1"></a>    style Dose fill:<span class="co">#90EE90,stroke:#228B22</span></span>
-<span id="cb4-205"><a href="#cb4-205" aria-hidden="true" tabindex="-1"></a>    style Elim fill:<span class="co">#ffcccc,stroke:#cc0000</span></span>
-<span id="cb4-206"><a href="#cb4-206" aria-hidden="true" tabindex="-1"></a>    style Death fill:<span class="co">#ffcccc,stroke:#cc0000</span></span>
-<span id="cb4-207"><a href="#cb4-207" aria-hidden="true" tabindex="-1"></a>    style Tumor fill:<span class="co">#ffffcc,stroke:#999900</span></span>
-<span id="cb4-208"><a href="#cb4-208" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-202"><a href="#cb4-202" aria-hidden="true" tabindex="-1"></a><span class="fu">## Simulation Results</span></span>
+<span id="cb4-203"><a href="#cb4-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-204"><a href="#cb4-204" aria-hidden="true" tabindex="-1"></a><span class="fu">### PK Profile (45 mg/kg)</span></span>
+<span id="cb4-205"><a href="#cb4-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-206"><a href="#cb4-206" aria-hidden="true" tabindex="-1"></a>The following figure shows the simulated drug concentration profile compared to observed data following a single 45 mg/kg dose of CPT-11 (irinotecan) administered on Day 13.</span>
+<span id="cb4-207"><a href="#cb4-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-208"><a href="#cb4-208" aria-hidden="true" tabindex="-1"></a><span class="al">![PK simulation at 45 mg/kg showing rapid drug elimination](../outputs/01_pk_simulation.png)</span>{width=80%}</span>
 <span id="cb4-209"><a href="#cb4-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-210"><a href="#cb4-210" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-210"><a href="#cb4-210" aria-hidden="true" tabindex="-1"></a>**Key observations**:</span>
 <span id="cb4-211"><a href="#cb4-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-212"><a href="#cb4-212" aria-hidden="true" tabindex="-1"></a><span class="fu">## Simulation Results</span></span>
-<span id="cb4-213"><a href="#cb4-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-214"><a href="#cb4-214" aria-hidden="true" tabindex="-1"></a><span class="fu">### PK Profile (45 mg/kg)</span></span>
-<span id="cb4-215"><a href="#cb4-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-216"><a href="#cb4-216" aria-hidden="true" tabindex="-1"></a>The following figure shows the simulated drug concentration profile compared to observed data following a single 45 mg/kg dose of CPT-11 (irinotecan) administered on Day 13.</span>
-<span id="cb4-217"><a href="#cb4-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-218"><a href="#cb4-218" aria-hidden="true" tabindex="-1"></a><span class="al">![PK simulation at 45 mg/kg showing rapid drug elimination](../outputs/01_pk_simulation.png)</span>{width=80%}</span>
-<span id="cb4-219"><a href="#cb4-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-220"><a href="#cb4-220" aria-hidden="true" tabindex="-1"></a>**Key observations**:</span>
-<span id="cb4-221"><a href="#cb4-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-222"><a href="#cb4-222" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Peak concentration (Cmax) occurs immediately after dosing</span>
-<span id="cb4-223"><a href="#cb4-223" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Rapid initial decline reflects distribution phase</span>
-<span id="cb4-224"><a href="#cb4-224" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Terminal elimination phase shows the drug half-life</span>
-<span id="cb4-225"><a href="#cb4-225" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The 2-compartment model captures the biphasic decline</span>
-<span id="cb4-226"><a href="#cb4-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-227"><a href="#cb4-227" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tumor Growth Inhibition (All Doses)</span></span>
-<span id="cb4-228"><a href="#cb4-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-229"><a href="#cb4-229" aria-hidden="true" tabindex="-1"></a>The tumor response to different dose levels demonstrates dose-dependent efficacy.</span>
-<span id="cb4-230"><a href="#cb4-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-231"><a href="#cb4-231" aria-hidden="true" tabindex="-1"></a><span class="al">![Tumor growth inhibition for Control, 45 mg/kg, and 60 mg/kg](../outputs/01_tumor_alldoses.png)</span>{width=90%}</span>
-<span id="cb4-232"><a href="#cb4-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-233"><a href="#cb4-233" aria-hidden="true" tabindex="-1"></a>**Key observations**:</span>
-<span id="cb4-234"><a href="#cb4-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-235"><a href="#cb4-235" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Control**: Tumor grows following the characteristic exponential → linear pattern</span>
-<span id="cb4-236"><a href="#cb4-236" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**45 mg/kg**: Partial tumor suppression; growth is slowed but not arrested</span>
-<span id="cb4-237"><a href="#cb4-237" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**60 mg/kg**: Greater tumor suppression; tumor growth is substantially inhibited</span>
-<span id="cb4-238"><a href="#cb4-238" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Both treated groups show tumor recovery after drug washout (single dose)</span>
-<span id="cb4-239"><a href="#cb4-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-240"><a href="#cb4-240" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-241"><a href="#cb4-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-242"><a href="#cb4-242" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pumas Implementation Highlights</span></span>
-<span id="cb4-243"><a href="#cb4-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-244"><a href="#cb4-244" aria-hidden="true" tabindex="-1"></a>The Simeoni model is implemented in Pumas using several key blocks.</span>
-<span id="cb4-245"><a href="#cb4-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-246"><a href="#cb4-246" aria-hidden="true" tabindex="-1"></a><span class="fu">### Parameter Definition (`@param`)</span></span>
-<span id="cb4-247"><a href="#cb4-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-250"><a href="#cb4-250" aria-hidden="true" tabindex="-1"></a><span class="in">```{julia}</span></span>
-<span id="cb4-251"><a href="#cb4-251" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
-<span id="cb4-252"><a href="#cb4-252" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb4-253"><a href="#cb4-253" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb4-254"><a href="#cb4-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-255"><a href="#cb4-255" aria-hidden="true" tabindex="-1"></a><span class="pp">@param</span> <span class="cf">begin</span></span>
-<span id="cb4-256"><a href="#cb4-256" aria-hidden="true" tabindex="-1"></a>    <span class="co"># PK Parameters (micro-rate constants)</span></span>
-<span id="cb4-257"><a href="#cb4-257" aria-hidden="true" tabindex="-1"></a>    tvk_el <span class="op">∈</span> <span class="fu">RealDomain</span>(lower<span class="op">=</span><span class="fl">0.0</span>)     <span class="co"># Elimination rate constant (day⁻¹)</span></span>
-<span id="cb4-258"><a href="#cb4-258" aria-hidden="true" tabindex="-1"></a>    tvk12  <span class="op">∈</span> <span class="fu">RealDomain</span>(lower<span class="op">=</span><span class="fl">0.0</span>)     <span class="co"># Central→Peripheral rate (day⁻¹)</span></span>
-<span id="cb4-259"><a href="#cb4-259" aria-hidden="true" tabindex="-1"></a>    tvk21  <span class="op">∈</span> <span class="fu">RealDomain</span>(lower<span class="op">=</span><span class="fl">0.0</span>)     <span class="co"># Peripheral→Central rate (day⁻¹)</span></span>
-<span id="cb4-260"><a href="#cb4-260" aria-hidden="true" tabindex="-1"></a>    tvVc   <span class="op">∈</span> <span class="fu">RealDomain</span>(lower<span class="op">=</span><span class="fl">0.0</span>)     <span class="co"># Central volume (L)</span></span>
+<span id="cb4-212"><a href="#cb4-212" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Peak concentration (Cmax) occurs immediately after dosing</span>
+<span id="cb4-213"><a href="#cb4-213" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Rapid initial decline reflects distribution phase</span>
+<span id="cb4-214"><a href="#cb4-214" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Terminal elimination phase shows the drug half-life</span>
+<span id="cb4-215"><a href="#cb4-215" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The 2-compartment model captures the biphasic decline</span>
+<span id="cb4-216"><a href="#cb4-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-217"><a href="#cb4-217" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tumor Growth Inhibition (All Doses)</span></span>
+<span id="cb4-218"><a href="#cb4-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-219"><a href="#cb4-219" aria-hidden="true" tabindex="-1"></a>The tumor response to different dose levels demonstrates dose-dependent efficacy.</span>
+<span id="cb4-220"><a href="#cb4-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-221"><a href="#cb4-221" aria-hidden="true" tabindex="-1"></a><span class="al">![Tumor growth inhibition for Control, 45 mg/kg, and 60 mg/kg](../outputs/01_tumor_alldoses.png)</span>{width=90%}</span>
+<span id="cb4-222"><a href="#cb4-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-223"><a href="#cb4-223" aria-hidden="true" tabindex="-1"></a>**Key observations**:</span>
+<span id="cb4-224"><a href="#cb4-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-225"><a href="#cb4-225" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Control**: Tumor grows following the characteristic exponential → linear pattern</span>
+<span id="cb4-226"><a href="#cb4-226" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**45 mg/kg**: Partial tumor suppression; growth is slowed but not arrested</span>
+<span id="cb4-227"><a href="#cb4-227" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**60 mg/kg**: Greater tumor suppression; tumor growth is substantially inhibited</span>
+<span id="cb4-228"><a href="#cb4-228" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Both treated groups show tumor recovery after drug washout (single dose)</span>
+<span id="cb4-229"><a href="#cb4-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-230"><a href="#cb4-230" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pumas Implementation Highlights</span></span>
+<span id="cb4-231"><a href="#cb4-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-232"><a href="#cb4-232" aria-hidden="true" tabindex="-1"></a>The Simeoni model is implemented in Pumas using several key blocks.</span>
+<span id="cb4-233"><a href="#cb4-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-234"><a href="#cb4-234" aria-hidden="true" tabindex="-1"></a><span class="fu">### Parameter Definition (`@param`)</span></span>
+<span id="cb4-235"><a href="#cb4-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-238"><a href="#cb4-238" aria-hidden="true" tabindex="-1"></a><span class="in">```{julia}</span></span>
+<span id="cb4-239"><a href="#cb4-239" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
+<span id="cb4-240"><a href="#cb4-240" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb4-241"><a href="#cb4-241" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb4-242"><a href="#cb4-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-243"><a href="#cb4-243" aria-hidden="true" tabindex="-1"></a><span class="pp">@param</span> <span class="cf">begin</span></span>
+<span id="cb4-244"><a href="#cb4-244" aria-hidden="true" tabindex="-1"></a>    <span class="co"># PK Parameters (micro-rate constants)</span></span>
+<span id="cb4-245"><a href="#cb4-245" aria-hidden="true" tabindex="-1"></a>    tvk_el <span class="op">∈</span> <span class="fu">RealDomain</span>(lower<span class="op">=</span><span class="fl">0.0</span>)     <span class="co"># Elimination rate constant (day⁻¹)</span></span>
+<span id="cb4-246"><a href="#cb4-246" aria-hidden="true" tabindex="-1"></a>    tvk12  <span class="op">∈</span> <span class="fu">RealDomain</span>(lower<span class="op">=</span><span class="fl">0.0</span>)     <span class="co"># Central→Peripheral rate (day⁻¹)</span></span>
+<span id="cb4-247"><a href="#cb4-247" aria-hidden="true" tabindex="-1"></a>    tvk21  <span class="op">∈</span> <span class="fu">RealDomain</span>(lower<span class="op">=</span><span class="fl">0.0</span>)     <span class="co"># Peripheral→Central rate (day⁻¹)</span></span>
+<span id="cb4-248"><a href="#cb4-248" aria-hidden="true" tabindex="-1"></a>    tvVc   <span class="op">∈</span> <span class="fu">RealDomain</span>(lower<span class="op">=</span><span class="fl">0.0</span>)     <span class="co"># Central volume (L)</span></span>
+<span id="cb4-249"><a href="#cb4-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-250"><a href="#cb4-250" aria-hidden="true" tabindex="-1"></a>    <span class="co"># PD Parameters (Simeoni TGI)</span></span>
+<span id="cb4-251"><a href="#cb4-251" aria-hidden="true" tabindex="-1"></a>    tvlambda0 <span class="op">∈</span> <span class="fu">RealDomain</span>(lower<span class="op">=</span><span class="fl">0.0</span>)  <span class="co"># Exponential growth rate (day⁻¹)</span></span>
+<span id="cb4-252"><a href="#cb4-252" aria-hidden="true" tabindex="-1"></a>    tvlambda1 <span class="op">∈</span> <span class="fu">RealDomain</span>(lower<span class="op">=</span><span class="fl">0.0</span>)  <span class="co"># Linear growth rate (g/day)</span></span>
+<span id="cb4-253"><a href="#cb4-253" aria-hidden="true" tabindex="-1"></a>    tvk1      <span class="op">∈</span> <span class="fu">RealDomain</span>(lower<span class="op">=</span><span class="fl">0.0</span>)  <span class="co"># Transit rate constant (day⁻¹)</span></span>
+<span id="cb4-254"><a href="#cb4-254" aria-hidden="true" tabindex="-1"></a>    tvk2      <span class="op">∈</span> <span class="fu">RealDomain</span>(lower<span class="op">=</span><span class="fl">0.0</span>)  <span class="co"># Drug potency (mL/ng/day)</span></span>
+<span id="cb4-255"><a href="#cb4-255" aria-hidden="true" tabindex="-1"></a>    tvw0      <span class="op">∈</span> <span class="fu">RealDomain</span>(lower<span class="op">=</span><span class="fl">0.0</span>)  <span class="co"># Initial tumor weight (g)</span></span>
+<span id="cb4-256"><a href="#cb4-256" aria-hidden="true" tabindex="-1"></a>    psi       <span class="op">∈</span> <span class="fu">RealDomain</span>(lower<span class="op">=</span><span class="fl">1.0</span>)  <span class="co"># Growth switch (FIXED)</span></span>
+<span id="cb4-257"><a href="#cb4-257" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb4-258"><a href="#cb4-258" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-259"><a href="#cb4-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-260"><a href="#cb4-260" aria-hidden="true" tabindex="-1"></a><span class="fu">### Intermediate Variables (`@vars`)</span></span>
 <span id="cb4-261"><a href="#cb4-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-262"><a href="#cb4-262" aria-hidden="true" tabindex="-1"></a>    <span class="co"># PD Parameters (Simeoni TGI)</span></span>
-<span id="cb4-263"><a href="#cb4-263" aria-hidden="true" tabindex="-1"></a>    tvlambda0 <span class="op">∈</span> <span class="fu">RealDomain</span>(lower<span class="op">=</span><span class="fl">0.0</span>)  <span class="co"># Exponential growth rate (day⁻¹)</span></span>
-<span id="cb4-264"><a href="#cb4-264" aria-hidden="true" tabindex="-1"></a>    tvlambda1 <span class="op">∈</span> <span class="fu">RealDomain</span>(lower<span class="op">=</span><span class="fl">0.0</span>)  <span class="co"># Linear growth rate (g/day)</span></span>
-<span id="cb4-265"><a href="#cb4-265" aria-hidden="true" tabindex="-1"></a>    tvk1      <span class="op">∈</span> <span class="fu">RealDomain</span>(lower<span class="op">=</span><span class="fl">0.0</span>)  <span class="co"># Transit rate constant (day⁻¹)</span></span>
-<span id="cb4-266"><a href="#cb4-266" aria-hidden="true" tabindex="-1"></a>    tvk2      <span class="op">∈</span> <span class="fu">RealDomain</span>(lower<span class="op">=</span><span class="fl">0.0</span>)  <span class="co"># Drug potency (mL/ng/day)</span></span>
-<span id="cb4-267"><a href="#cb4-267" aria-hidden="true" tabindex="-1"></a>    tvw0      <span class="op">∈</span> <span class="fu">RealDomain</span>(lower<span class="op">=</span><span class="fl">0.0</span>)  <span class="co"># Initial tumor weight (g)</span></span>
-<span id="cb4-268"><a href="#cb4-268" aria-hidden="true" tabindex="-1"></a>    psi       <span class="op">∈</span> <span class="fu">RealDomain</span>(lower<span class="op">=</span><span class="fl">1.0</span>)  <span class="co"># Growth switch (FIXED)</span></span>
-<span id="cb4-269"><a href="#cb4-269" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
-<span id="cb4-270"><a href="#cb4-270" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-271"><a href="#cb4-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-272"><a href="#cb4-272" aria-hidden="true" tabindex="-1"></a><span class="fu">### Intermediate Variables (`@vars`)</span></span>
+<span id="cb4-262"><a href="#cb4-262" aria-hidden="true" tabindex="-1"></a>The Simeoni growth term is computed in the <span class="in">`@vars`</span> block:</span>
+<span id="cb4-263"><a href="#cb4-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-266"><a href="#cb4-266" aria-hidden="true" tabindex="-1"></a><span class="in">```{julia}</span></span>
+<span id="cb4-267"><a href="#cb4-267" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb4-268"><a href="#cb4-268" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb4-269"><a href="#cb4-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-270"><a href="#cb4-270" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> <span class="cf">begin</span></span>
+<span id="cb4-271"><a href="#cb4-271" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Drug concentration (ng/mL)</span></span>
+<span id="cb4-272"><a href="#cb4-272" aria-hidden="true" tabindex="-1"></a>    cp <span class="op">=</span> (Central <span class="op">/</span> <span class="fu">max</span>(Vc, <span class="fl">1e-10</span>)) <span class="op">*</span> <span class="fl">1000</span></span>
 <span id="cb4-273"><a href="#cb4-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-274"><a href="#cb4-274" aria-hidden="true" tabindex="-1"></a>The Simeoni growth term is computed in the <span class="in">`@vars`</span> block:</span>
-<span id="cb4-275"><a href="#cb4-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-278"><a href="#cb4-278" aria-hidden="true" tabindex="-1"></a><span class="in">```{julia}</span></span>
-<span id="cb4-279"><a href="#cb4-279" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb4-280"><a href="#cb4-280" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb4-274"><a href="#cb4-274" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Total tumor weight (sum of all compartments)</span></span>
+<span id="cb4-275"><a href="#cb4-275" aria-hidden="true" tabindex="-1"></a>    tumor <span class="op">=</span> x1 <span class="op">+</span> x2 <span class="op">+</span> x3 <span class="op">+</span> x4</span>
+<span id="cb4-276"><a href="#cb4-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-277"><a href="#cb4-277" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Simeoni growth term with exponential→linear transition</span></span>
+<span id="cb4-278"><a href="#cb4-278" aria-hidden="true" tabindex="-1"></a>    growth <span class="op">=</span> lambda0 <span class="op">*</span> x1 <span class="op">/</span> (<span class="fl">1.0</span> <span class="op">+</span> (lambda0 <span class="op">/</span> lambda1 <span class="op">*</span> tumor)<span class="op">^</span>psi)<span class="op">^</span>(<span class="fl">1.0</span> <span class="op">/</span> psi)</span>
+<span id="cb4-279"><a href="#cb4-279" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb4-280"><a href="#cb4-280" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb4-281"><a href="#cb4-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-282"><a href="#cb4-282" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> <span class="cf">begin</span></span>
-<span id="cb4-283"><a href="#cb4-283" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Drug concentration (ng/mL)</span></span>
-<span id="cb4-284"><a href="#cb4-284" aria-hidden="true" tabindex="-1"></a>    cp <span class="op">=</span> (Central <span class="op">/</span> <span class="fu">max</span>(Vc, <span class="fl">1e-10</span>)) <span class="op">*</span> <span class="fl">1000</span></span>
-<span id="cb4-285"><a href="#cb4-285" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-286"><a href="#cb4-286" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Total tumor weight (sum of all compartments)</span></span>
-<span id="cb4-287"><a href="#cb4-287" aria-hidden="true" tabindex="-1"></a>    tumor <span class="op">=</span> x1 <span class="op">+</span> x2 <span class="op">+</span> x3 <span class="op">+</span> x4</span>
-<span id="cb4-288"><a href="#cb4-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-289"><a href="#cb4-289" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Simeoni growth term with exponential→linear transition</span></span>
-<span id="cb4-290"><a href="#cb4-290" aria-hidden="true" tabindex="-1"></a>    growth <span class="op">=</span> lambda0 <span class="op">*</span> x1 <span class="op">/</span> (<span class="fl">1.0</span> <span class="op">+</span> (lambda0 <span class="op">/</span> lambda1 <span class="op">*</span> tumor)<span class="op">^</span>psi)<span class="op">^</span>(<span class="fl">1.0</span> <span class="op">/</span> psi)</span>
-<span id="cb4-291"><a href="#cb4-291" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
-<span id="cb4-292"><a href="#cb4-292" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-293"><a href="#cb4-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-294"><a href="#cb4-294" aria-hidden="true" tabindex="-1"></a><span class="fu">### Dynamics (`@dynamics`)</span></span>
-<span id="cb4-295"><a href="#cb4-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-298"><a href="#cb4-298" aria-hidden="true" tabindex="-1"></a><span class="in">```{julia}</span></span>
-<span id="cb4-299"><a href="#cb4-299" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb4-300"><a href="#cb4-300" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb4-301"><a href="#cb4-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-302"><a href="#cb4-302" aria-hidden="true" tabindex="-1"></a><span class="pp">@dynamics</span> <span class="cf">begin</span></span>
-<span id="cb4-303"><a href="#cb4-303" aria-hidden="true" tabindex="-1"></a>    <span class="co"># PK: 2-Compartment Model</span></span>
-<span id="cb4-304"><a href="#cb4-304" aria-hidden="true" tabindex="-1"></a>    Central<span class="op">&#39;</span>    <span class="op">=</span> <span class="op">-</span>k_el <span class="op">*</span> Central <span class="op">-</span> k12 <span class="op">*</span> Central <span class="op">+</span> k21 <span class="op">*</span> Peripheral</span>
-<span id="cb4-305"><a href="#cb4-305" aria-hidden="true" tabindex="-1"></a>    Peripheral<span class="op">&#39;</span> <span class="op">=</span> k12 <span class="op">*</span> Central <span class="op">-</span> k21 <span class="op">*</span> Peripheral</span>
-<span id="cb4-306"><a href="#cb4-306" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-307"><a href="#cb4-307" aria-hidden="true" tabindex="-1"></a>    <span class="co"># PD: Simeoni TGI Transit Compartment Model</span></span>
-<span id="cb4-308"><a href="#cb4-308" aria-hidden="true" tabindex="-1"></a>    x1<span class="op">&#39;</span> <span class="op">=</span> growth <span class="op">-</span> k2 <span class="op">*</span> cp <span class="op">*</span> x1</span>
-<span id="cb4-309"><a href="#cb4-309" aria-hidden="true" tabindex="-1"></a>    x2<span class="op">&#39;</span> <span class="op">=</span> k2 <span class="op">*</span> cp <span class="op">*</span> x1 <span class="op">-</span> k1 <span class="op">*</span> x2</span>
-<span id="cb4-310"><a href="#cb4-310" aria-hidden="true" tabindex="-1"></a>    x3<span class="op">&#39;</span> <span class="op">=</span> k1 <span class="op">*</span> (x2 <span class="op">-</span> x3)</span>
-<span id="cb4-311"><a href="#cb4-311" aria-hidden="true" tabindex="-1"></a>    x4<span class="op">&#39;</span> <span class="op">=</span> k1 <span class="op">*</span> (x3 <span class="op">-</span> x4)</span>
-<span id="cb4-312"><a href="#cb4-312" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
-<span id="cb4-313"><a href="#cb4-313" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-314"><a href="#cb4-314" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-315"><a href="#cb4-315" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-316"><a href="#cb4-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-317"><a href="#cb4-317" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary: Model Parameters</span></span>
-<span id="cb4-318"><a href="#cb4-318" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-319"><a href="#cb4-319" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Parameter <span class="pp">|</span> Description <span class="pp">|</span> Units <span class="pp">|</span> Typical Value <span class="pp">|</span></span>
-<span id="cb4-320"><a href="#cb4-320" aria-hidden="true" tabindex="-1"></a><span class="pp">|-----------|-------------|-------|---------------|</span></span>
-<span id="cb4-321"><a href="#cb4-321" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $\lambda_0$ <span class="pp">|</span> Exponential growth rate <span class="pp">|</span> day$^{-1}$ <span class="pp">|</span> 0.12 - 0.15 <span class="pp">|</span></span>
-<span id="cb4-322"><a href="#cb4-322" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $\lambda_1$ <span class="pp">|</span> Linear growth rate <span class="pp">|</span> g/day <span class="pp">|</span> 0.33 - 0.35 <span class="pp">|</span></span>
-<span id="cb4-323"><a href="#cb4-323" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $\psi$ <span class="pp">|</span> Transition sharpness <span class="pp">|</span> — <span class="pp">|</span> 20 (fixed) <span class="pp">|</span></span>
-<span id="cb4-324"><a href="#cb4-324" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k_1$ <span class="pp">|</span> Transit rate constant <span class="pp">|</span> day$^{-1}$ <span class="pp">|</span> 0.47 - 0.82 <span class="pp">|</span></span>
-<span id="cb4-325"><a href="#cb4-325" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k_2$ <span class="pp">|</span> Drug potency <span class="pp">|</span> mL/(ng·day) <span class="pp">|</span> 7 - 8 × 10$^{-4}$ <span class="pp">|</span></span>
-<span id="cb4-326"><a href="#cb4-326" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $w_0$ <span class="pp">|</span> Initial tumor weight <span class="pp">|</span> g <span class="pp">|</span> 0.085 <span class="pp">|</span></span>
-<span id="cb4-327"><a href="#cb4-327" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k_{el}$ <span class="pp">|</span> Elimination rate <span class="pp">|</span> day$^{-1}$ <span class="pp">|</span> ~13.5 <span class="pp">|</span></span>
-<span id="cb4-328"><a href="#cb4-328" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k_{12}$ <span class="pp">|</span> Distribution rate <span class="pp">|</span> day$^{-1}$ <span class="pp">|</span> ~0.27 <span class="pp">|</span></span>
-<span id="cb4-329"><a href="#cb4-329" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k_{21}$ <span class="pp">|</span> Redistribution rate <span class="pp">|</span> day$^{-1}$ <span class="pp">|</span> ~1.5 - 2.0 <span class="pp">|</span></span>
-<span id="cb4-330"><a href="#cb4-330" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $V_c$ <span class="pp">|</span> Central volume <span class="pp">|</span> L <span class="pp">|</span> ~0.08 <span class="pp">|</span></span>
-<span id="cb4-331"><a href="#cb4-331" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-332"><a href="#cb4-332" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-333"><a href="#cb4-333" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-334"><a href="#cb4-334" aria-hidden="true" tabindex="-1"></a><span class="fu">## Hands-On Exercise</span></span>
-<span id="cb4-335"><a href="#cb4-335" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-336"><a href="#cb4-336" aria-hidden="true" tabindex="-1"></a>The complete implementation is available in:</span>
-<span id="cb4-337"><a href="#cb4-337" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-338"><a href="#cb4-338" aria-hidden="true" tabindex="-1"></a>📁 <span class="in">`Handson/SimeoneModel.jl`</span></span>
-<span id="cb4-339"><a href="#cb4-339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-340"><a href="#cb4-340" aria-hidden="true" tabindex="-1"></a>This script includes:</span>
-<span id="cb4-341"><a href="#cb4-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-342"><a href="#cb4-342" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Model building with all Pumas DSL blocks</span>
-<span id="cb4-343"><a href="#cb4-343" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Subject and dosing regimen creation</span>
-<span id="cb4-344"><a href="#cb4-344" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Simulation for multiple dose groups</span>
-<span id="cb4-345"><a href="#cb4-345" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Visualization comparing simulations to observed data</span>
+<span id="cb4-282"><a href="#cb4-282" aria-hidden="true" tabindex="-1"></a><span class="fu">### Dynamics (`@dynamics`)</span></span>
+<span id="cb4-283"><a href="#cb4-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-286"><a href="#cb4-286" aria-hidden="true" tabindex="-1"></a><span class="in">```{julia}</span></span>
+<span id="cb4-287"><a href="#cb4-287" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb4-288"><a href="#cb4-288" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb4-289"><a href="#cb4-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-290"><a href="#cb4-290" aria-hidden="true" tabindex="-1"></a><span class="pp">@dynamics</span> <span class="cf">begin</span></span>
+<span id="cb4-291"><a href="#cb4-291" aria-hidden="true" tabindex="-1"></a>    <span class="co"># PK: 2-Compartment Model</span></span>
+<span id="cb4-292"><a href="#cb4-292" aria-hidden="true" tabindex="-1"></a>    Central<span class="op">&#39;</span>    <span class="op">=</span> <span class="op">-</span>k_el <span class="op">*</span> Central <span class="op">-</span> k12 <span class="op">*</span> Central <span class="op">+</span> k21 <span class="op">*</span> Peripheral</span>
+<span id="cb4-293"><a href="#cb4-293" aria-hidden="true" tabindex="-1"></a>    Peripheral<span class="op">&#39;</span> <span class="op">=</span> k12 <span class="op">*</span> Central <span class="op">-</span> k21 <span class="op">*</span> Peripheral</span>
+<span id="cb4-294"><a href="#cb4-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-295"><a href="#cb4-295" aria-hidden="true" tabindex="-1"></a>    <span class="co"># PD: Simeoni TGI Transit Compartment Model</span></span>
+<span id="cb4-296"><a href="#cb4-296" aria-hidden="true" tabindex="-1"></a>    x1<span class="op">&#39;</span> <span class="op">=</span> growth <span class="op">-</span> k2 <span class="op">*</span> cp <span class="op">*</span> x1</span>
+<span id="cb4-297"><a href="#cb4-297" aria-hidden="true" tabindex="-1"></a>    x2<span class="op">&#39;</span> <span class="op">=</span> k2 <span class="op">*</span> cp <span class="op">*</span> x1 <span class="op">-</span> k1 <span class="op">*</span> x2</span>
+<span id="cb4-298"><a href="#cb4-298" aria-hidden="true" tabindex="-1"></a>    x3<span class="op">&#39;</span> <span class="op">=</span> k1 <span class="op">*</span> (x2 <span class="op">-</span> x3)</span>
+<span id="cb4-299"><a href="#cb4-299" aria-hidden="true" tabindex="-1"></a>    x4<span class="op">&#39;</span> <span class="op">=</span> k1 <span class="op">*</span> (x3 <span class="op">-</span> x4)</span>
+<span id="cb4-300"><a href="#cb4-300" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb4-301"><a href="#cb4-301" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-302"><a href="#cb4-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-303"><a href="#cb4-303" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary: Model Parameters</span></span>
+<span id="cb4-304"><a href="#cb4-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-305"><a href="#cb4-305" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Parameter <span class="pp">|</span> Description <span class="pp">|</span> Units <span class="pp">|</span> Typical Value <span class="pp">|</span></span>
+<span id="cb4-306"><a href="#cb4-306" aria-hidden="true" tabindex="-1"></a><span class="pp">|-----------|-------------|-------|---------------|</span></span>
+<span id="cb4-307"><a href="#cb4-307" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $\lambda_0$ <span class="pp">|</span> Exponential growth rate <span class="pp">|</span> day$^{-1}$ <span class="pp">|</span> 0.12 - 0.15 <span class="pp">|</span></span>
+<span id="cb4-308"><a href="#cb4-308" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $\lambda_1$ <span class="pp">|</span> Linear growth rate <span class="pp">|</span> g/day <span class="pp">|</span> 0.33 - 0.35 <span class="pp">|</span></span>
+<span id="cb4-309"><a href="#cb4-309" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $\psi$ <span class="pp">|</span> Transition sharpness <span class="pp">|</span> — <span class="pp">|</span> 20 (fixed) <span class="pp">|</span></span>
+<span id="cb4-310"><a href="#cb4-310" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k_1$ <span class="pp">|</span> Transit rate constant <span class="pp">|</span> day$^{-1}$ <span class="pp">|</span> 0.47 - 0.82 <span class="pp">|</span></span>
+<span id="cb4-311"><a href="#cb4-311" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k_2$ <span class="pp">|</span> Drug potency <span class="pp">|</span> mL/(ng·day) <span class="pp">|</span> 7 - 8 × 10$^{-4}$ <span class="pp">|</span></span>
+<span id="cb4-312"><a href="#cb4-312" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $w_0$ <span class="pp">|</span> Initial tumor weight <span class="pp">|</span> g <span class="pp">|</span> 0.085 <span class="pp">|</span></span>
+<span id="cb4-313"><a href="#cb4-313" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k_{el}$ <span class="pp">|</span> Elimination rate <span class="pp">|</span> day$^{-1}$ <span class="pp">|</span> ~13.5 <span class="pp">|</span></span>
+<span id="cb4-314"><a href="#cb4-314" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k_{12}$ <span class="pp">|</span> Distribution rate <span class="pp">|</span> day$^{-1}$ <span class="pp">|</span> ~0.27 <span class="pp">|</span></span>
+<span id="cb4-315"><a href="#cb4-315" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k_{21}$ <span class="pp">|</span> Redistribution rate <span class="pp">|</span> day$^{-1}$ <span class="pp">|</span> ~1.5 - 2.0 <span class="pp">|</span></span>
+<span id="cb4-316"><a href="#cb4-316" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $V_c$ <span class="pp">|</span> Central volume <span class="pp">|</span> L <span class="pp">|</span> ~0.08 <span class="pp">|</span></span>
+<span id="cb4-317"><a href="#cb4-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-318"><a href="#cb4-318" aria-hidden="true" tabindex="-1"></a><span class="fu">## Hands-On Exercise</span></span>
+<span id="cb4-319"><a href="#cb4-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-320"><a href="#cb4-320" aria-hidden="true" tabindex="-1"></a>The complete implementation is available in:</span>
+<span id="cb4-321"><a href="#cb4-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-322"><a href="#cb4-322" aria-hidden="true" tabindex="-1"></a>📁 <span class="in">`Handson/SimeoneModel.jl`</span></span>
+<span id="cb4-323"><a href="#cb4-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-324"><a href="#cb4-324" aria-hidden="true" tabindex="-1"></a>This script includes:</span>
+<span id="cb4-325"><a href="#cb4-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-326"><a href="#cb4-326" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Model building with all Pumas DSL blocks</span>
+<span id="cb4-327"><a href="#cb4-327" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Subject and dosing regimen creation</span>
+<span id="cb4-328"><a href="#cb4-328" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Simulation for multiple dose groups</span>
+<span id="cb4-329"><a href="#cb4-329" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Visualization comparing simulations to observed data</span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
