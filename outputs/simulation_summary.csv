@@ -1,0 +1,5 @@
+Scenario,Final_Tumor_g,Min_Tumor_g,Max_Tumor_g,Cmax_ng_mL,Total_Doses
+60 mg/kg Q3W,10.8795,0.085,11.2408,15384.62,8
+60 mg/kg Q2W,6.7068,0.085,7.1084,15384.62,12
+60 mg/kg QW,0.9115,0.085,0.9749,15384.62,24
+60 mg/kg Q4D,0.0,0.0,0.4443,15384.73,42
