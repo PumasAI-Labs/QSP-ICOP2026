@@ -336,7 +336,7 @@ Let's verify our model works by running a quick simulation.
 # Create subjects for all dose levels
 # Body weight: 20 g = 0.020 kg
 # Doses: Control (0), 45 mg/kg (0.9 mg), 60 mg/kg (1.2 mg)
-mouse_weight_kg = 0.020  # 25g mouse
+mouse_weight_kg = 0.020  # 20g mouse
 
 # Time grid with hourly sampling day 13-14 for PK visualization
 time_grid = sort(unique(vcat(0.0:0.5:50.0, 13.0:(1/24):14.0)))
