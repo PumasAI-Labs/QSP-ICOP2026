@@ -67,7 +67,7 @@
     "href": "index.html#workshop-agenda",
     "title": "Quantitative Systems Pharmacology Workshop",
     "section": "Workshop Agenda",
-    "text": "Workshop Agenda\nThis is a 4-hour workshop with three main sessions plus breaks for hands-on exercises. All times are in Indian Standard Time (IST).\n\n\n\n\nTime (IST)\n\n\nSession\n\n\nTopics\n\n\n\n\n\n\n9:00 AM - 9:15 AM\n\n\nWelcome & Setup\n\n\nIntroduction, environment check, workshop overview\n\n\n\n\n9:15 AM - 10:15 AM\n\n\nSession 1: Model Building\n\n\n• Biological motivation for the Simeoni model • Mathematical formulation (PK + PD) • Pumas DSL: @param, @pre, @init, @vars, @dynamics, @derived&lt;br/&gt; • Simulation and visualization\n\n\n\n\n10:15 AM - 10:35 AM\n\n\n☕ Tea Break\n\n\nRefreshments & networking\n\n\n\n\n10:35 AM - 11:35 AM\n\n\nSession 2: Parameter Estimation\n\n\n• PK estimation with error model selection • PKPD estimation with fixed PK parameters • Model diagnostics and goodness-of-fit • Dose-response simulation scenarios (Q3W to Q4D)\n\n\n\n\n11:35 AM - 11:50 AM\n\n\nBreak\n\n\nHands-on: Design your own dosing scenario\n\n\n\n\n11:50 AM - 12:50 PM\n\n\nSession 3: Sensitivity Analysis\n\n\n• Local sensitivity analysis (LSA) methodology • Tornado plot interpretation • Global sensitivity analysis (GSA) with Sobol indices • Comparing S1 and ST indices\n\n\n\n\n12:50 PM - 1:05 PM\n\n\nWrap-up & Q&A\n\n\nKey takeaways, additional resources, discussion"
+    "text": "Workshop Agenda\nThis is a 4-hour workshop with three main sessions plus breaks for hands-on exercises.\n\n\n\n\nTime\n\n\nSession\n\n\nTopics\n\n\n\n\n\n\n9:00 - 0:15\n\n\nWelcome & Context\n\n\nWhy modelling matters today ? What is QSP, and how it extends PK/PD ?\n\n\n\n\n9:15 - 9:40\n\n\nFoundations of a QSP model\n\n\n• Layers of a model : system, drug, data, decision  • Conceptual overview of compartments, targets, feedbacks  • Vantage ADC model as a unifiying example \n\n\n\n\n9:40 - 10:00\n\n\nCase Study 1 : ADC model\n\n\n• ADC efficacy  • Visualizing structure -&gt; simulation -&gt; decision  • Exploring question that a QSP model can answer \n\n\n\n\n10:00 - 11:00\n\n\nHands on with a PK/PD model\n\n\n• Connecting pharmacology intuition with model behavior , setup and demo  • Group exploration - modify dosing, potency, half-live etc and observe model outcomes  • Debrief - Summarize changes, interpreting AUC, Cmax and PD delay \n\n\n\n\n11:00 - 11:25\n\n\nCase Study 2 : PK/PD to QSP\n\n\nHow feedbacks, cell dynamics, or multiple targets expand PK/PD to QSP (eg. thrombocytopenia in ADCs)\n\n\n\n\n11:25 - 12:00\n\n\nWrap-Up Discussion"
   },
   {
     "objectID": "index.html#session-materials",
@@ -88,7 +88,7 @@
     "href": "index.html#prerequisites",
     "title": "Quantitative Systems Pharmacology Workshop",
     "section": "Prerequisites",
-    "text": "Prerequisites\n\nSoftware Requirements\n\nPumas v.2.7.1 or later\n\n\n\nBackground Knowledge\n\nBasic understanding of pharmacokinetics (compartmental models)\nFamiliarity with differential equations (conceptual)\nSome programming experience (Julia or similar)"
+    "text": "Prerequisites\n\nSoftware Requirements\n\nJulia 1.10+ with Pumas environment\nRequired packages: Pumas, PumasUtilities, AlgebraOfGraphics, CairoMakie, DataFramesMeta, CSV, GlobalSensitivity\n\n\n\nBackground Knowledge\n\nBasic understanding of pharmacokinetics (compartmental models)\nFamiliarity with differential equations (conceptual)\nSome programming experience (Julia or similar)"
   },
   {
     "objectID": "index.html#reference",
@@ -102,7 +102,7 @@
     "href": "index.html#contact",
     "title": "Quantitative Systems Pharmacology Workshop",
     "section": "Contact",
-    "text": "Contact\nFor questions about this workshop or the Pumas platform, please contact:\n\nWorkshop Materials: GitHub Repository\nPumas Documentation: docs.pumas.ai\nPumas Support: Pumas Discourse"
+    "text": "Contact\nFor questions about this workshop or the Pumas platform, please contact:\n\nWorkshop Materials: GitHub Repository\nPumas Documentation: docs.pumas.ai\nPumas Support: support@pumas.ai"
   },
   {
     "objectID": "01_SimeoniModel.html#introduction",

@@ -4013,6 +4013,7 @@ background-color: #f5f5f5;
 <li>Simulate dose-response scenarios to optimize treatment schedules</li>
 <li>Perform local and global sensitivity analysis to understand parameter influence</li>
 </ul>
+<hr>
 </section>
 <section id="workshop-overview" class="level2">
 <h2 class="anchored" data-anchor-id="workshop-overview">Workshop Overview</h2>
@@ -4035,21 +4036,22 @@ background-color: #f5f5f5;
 <li><strong>Integrated workflows</strong> - Seamless estimation, simulation, and analysis</li>
 <li><strong>Sensitivity analysis</strong> - Built-in support for LSA and GSA methods</li>
 </ul>
+<hr>
 </section>
 </section>
 <section id="workshop-agenda" class="level2">
 <h2 class="anchored" data-anchor-id="workshop-agenda">Workshop Agenda</h2>
-<p>This is a <strong>4-hour workshop</strong> with three main sessions plus breaks for hands-on exercises. All times are in <strong>Indian Standard Time (IST)</strong>.</p>
+<p>This is a <strong>4-hour workshop</strong> with three main sessions plus breaks for hands-on exercises.</p>
 <table class="agenda-table">
 <thead>
 <tr>
-<th style="width: 18%">
-Time (IST)
+<th style="width: 15%">
+Time
 </th>
 <th style="width: 25%">
 Session
 </th>
-<th style="width: 57%">
+<th style="width: 60%">
 Topics
 </th>
 </tr>
@@ -4057,83 +4059,72 @@ Topics
 <tbody>
 <tr>
 <td>
-<strong>9:00 AM - 9:15 AM</strong>
+<strong>9:00 - 0:15</strong>
 </td>
 <td>
-Welcome &amp; Setup
+Welcome &amp; Context
 </td>
 <td>
-Introduction, environment check, workshop overview
-</td>
-</tr>
-<tr>
-<td>
-<strong>9:15 AM - 10:15 AM</strong>
-</td>
-<td>
-<a href="01_SimeoniModel.html">Session 1: Model Building</a>
-</td>
-<td>
-• Biological motivation for the Simeoni model<br> • Mathematical formulation (PK + PD)<br> • Pumas DSL: <span class="citation" data-cites="param">@param</span>, <span class="citation" data-cites="pre">@pre</span>, <span class="citation" data-cites="init">@init</span>, <span class="citation" data-cites="vars">@vars</span>, <span class="citation" data-cites="dynamics">@dynamics</span>, <span class="citation" data-cites="derived&lt;br">@derived&lt;br</span>/&gt; • Simulation and visualization
-</td>
-</tr>
-<tr style="background-color: #fff3cd;">
-<td>
-<strong>10:15 AM - 10:35 AM</strong>
-</td>
-<td>
-☕ Tea Break
-</td>
-<td>
-Refreshments &amp; networking
+Why modelling matters today ? What is QSP, and how it extends PK/PD ?
 </td>
 </tr>
 <tr>
 <td>
-<strong>10:35 AM - 11:35 AM</strong>
+<strong>9:15 - 9:40</strong>
 </td>
 <td>
-<a href="02_ParameterEstimation.html">Session 2: Parameter Estimation</a>
+Foundations of a QSP model
 </td>
 <td>
-• PK estimation with error model selection<br> • PKPD estimation with fixed PK parameters<br> • Model diagnostics and goodness-of-fit<br> • Dose-response simulation scenarios (Q3W to Q4D)
-</td>
-</tr>
-<tr>
-<td>
-<strong>11:35 AM - 11:50 AM</strong>
-</td>
-<td>
-Break
-</td>
-<td>
-Hands-on: Design your own dosing scenario
+• Layers of a model : system, drug, data, decision <br> • Conceptual overview of compartments, targets, feedbacks <br> • Vantage ADC model as a unifiying example <br>
 </td>
 </tr>
 <tr>
 <td>
-<strong>11:50 AM - 12:50 PM</strong>
+<strong>9:40 - 10:00</strong>
 </td>
 <td>
-<a href="03_SensitivityAnalysis.html">Session 3: Sensitivity Analysis</a>
+Case Study 1 : ADC model
 </td>
 <td>
-• Local sensitivity analysis (LSA) methodology<br> • Tornado plot interpretation<br> • Global sensitivity analysis (GSA) with Sobol indices<br> • Comparing S1 and ST indices
+• ADC efficacy <br> • Visualizing structure -&gt; simulation -&gt; decision <br> • Exploring question that a QSP model can answer <br>
 </td>
 </tr>
 <tr>
 <td>
-<strong>12:50 PM - 1:05 PM</strong>
+<strong>10:00 - 11:00</strong>
 </td>
 <td>
-Wrap-up &amp; Q&amp;A
+Hands on with a PK/PD model
 </td>
 <td>
-Key takeaways, additional resources, discussion
+• Connecting pharmacology intuition with model behavior , setup and demo <br> • Group exploration - modify dosing, potency, half-live etc and observe model outcomes <br> • Debrief - Summarize changes, interpreting AUC, Cmax and PD delay <br>
+</td>
+</tr>
+<tr>
+<td>
+<strong>11:00 - 11:25</strong>
+</td>
+<td>
+Case Study 2 : PK/PD to QSP
+</td>
+<td>
+How feedbacks, cell dynamics, or multiple targets expand PK/PD to QSP (eg. thrombocytopenia in ADCs)
+</td>
+</tr>
+<tr>
+<td>
+<strong>11:25 - 12:00</strong>
+</td>
+<td>
+Wrap-Up Discussion
+</td>
+<td>
 </td>
 </tr>
 </tbody>
 </table>
+<hr>
 </section>
 <section id="session-materials" class="level2">
 <h2 class="anchored" data-anchor-id="session-materials">Session Materials</h2>
@@ -4176,6 +4167,7 @@ Key takeaways, additional resources, discussion
 </ul>
 <p><a href="03_SensitivityAnalysis.html"><strong>Go to Session 3 →</strong></a></p>
 </section>
+<hr>
 </section>
 <section id="hands-on-scripts" class="level2">
 <h2 class="anchored" data-anchor-id="hands-on-scripts">Hands-On Scripts</h2>
@@ -4214,13 +4206,15 @@ Key takeaways, additional resources, discussion
 </tr>
 </tbody>
 </table>
+<hr>
 </section>
 <section id="prerequisites" class="level2">
 <h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
 <section id="software-requirements" class="level3">
 <h3 class="anchored" data-anchor-id="software-requirements">Software Requirements</h3>
 <ul>
-<li>Pumas v.2.7.1 or later</li>
+<li><strong>Julia 1.10+</strong> with Pumas environment</li>
+<li>Required packages: <code>Pumas</code>, <code>PumasUtilities</code>, <code>AlgebraOfGraphics</code>, <code>CairoMakie</code>, <code>DataFramesMeta</code>, <code>CSV</code>, <code>GlobalSensitivity</code></li>
 </ul>
 </section>
 <section id="background-knowledge" class="level3">
@@ -4230,20 +4224,22 @@ Key takeaways, additional resources, discussion
 <li>Familiarity with differential equations (conceptual)</li>
 <li>Some programming experience (Julia or similar)</li>
 </ul>
+<hr>
 </section>
 </section>
 <section id="reference" class="level2">
 <h2 class="anchored" data-anchor-id="reference">Reference</h2>
 <p><strong>Primary Reference:</strong></p>
 <p>Simeoni M, Magni P, Cammia C, De Nicolao G, Croci V, Pesenti E, Germani M, Poggesi I, Rocchetti M. (2004) “Predictive Pharmacokinetic-Pharmacodynamic Modeling of Tumor Growth Kinetics in Xenograft Models after Administration of Anticancer Agents.” <em>Cancer Research</em> 64:1094-1101.</p>
+<hr>
 </section>
 <section id="contact" class="level2">
 <h2 class="anchored" data-anchor-id="contact">Contact</h2>
 <p>For questions about this workshop or the Pumas platform, please contact:</p>
 <ul>
-<li><strong>Workshop Materials</strong>: <a href="https://github.com/PumasAI-Labs/QSP-ICOP2026">GitHub Repository</a></li>
+<li><strong>Workshop Materials</strong>: <a href="https://github.com/pumasAI/education">GitHub Repository</a></li>
 <li><strong>Pumas Documentation</strong>: <a href="https://docs.pumas.ai">docs.pumas.ai</a></li>
-<li><strong>Pumas Support</strong>: <a href="https://discourse.pumas.ai">Pumas Discourse</a></li>
+<li><strong>Pumas Support</strong>: <a href="mailto:support@pumas.ai">support@pumas.ai</a></li>
 </ul>
 
 
@@ -4797,185 +4793,191 @@ Key takeaways, additional resources, discussion
 <span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Simulate dose-response scenarios to optimize treatment schedules</span>
 <span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Perform local and global sensitivity analysis to understand parameter influence</span>
 <span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="fu">## Workshop Overview</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Simeoni Model</span></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="fu">## Workshop Overview</span></span>
 <span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>The Simeoni TGI model is a mechanistic framework that describes:</span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Simeoni Model</span></span>
 <span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Two-compartment pharmacokinetics** - Drug distribution and elimination</span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Tumor growth dynamics** - Exponential to linear growth transition</span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Drug-induced cell damage** - Transit compartment model for cell death</span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>This model has become a standard tool for preclinical-to-clinical translation in oncology drug development.</span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>The Simeoni TGI model is a mechanistic framework that describes:</span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Two-compartment pharmacokinetics** - Drug distribution and elimination</span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Tumor growth dynamics** - Exponential to linear growth transition</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Drug-induced cell damage** - Transit compartment model for cell death</span>
 <span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why Pumas?</span></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>This model has become a standard tool for preclinical-to-clinical translation in oncology drug development.</span>
 <span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Pumas</span><span class="co">](https://pumas.ai)</span> is a comprehensive platform for pharmaceutical modeling and simulation that provides:</span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why Pumas?</span></span>
 <span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Expressive DSL** - Intuitive syntax for defining complex models</span>
-<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**High performance** - Julia-based computation for fast simulations</span>
-<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Integrated workflows** - Seamless estimation, simulation, and analysis</span>
-<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Sensitivity analysis** - Built-in support for LSA and GSA methods</span>
-<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="fu">## Workshop Agenda</span></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Pumas</span><span class="co">](https://pumas.ai)</span> is a comprehensive platform for pharmaceutical modeling and simulation that provides:</span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Expressive DSL** - Intuitive syntax for defining complex models</span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**High performance** - Julia-based computation for fast simulations</span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Integrated workflows** - Seamless estimation, simulation, and analysis</span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Sensitivity analysis** - Built-in support for LSA and GSA methods</span>
 <span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>This is a **4-hour workshop** with three main sessions plus breaks for hands-on exercises. All times are in **Indian Standard Time (IST)**.</span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">table</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;agenda-table&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">thead</span><span class="dt">&gt;</span></span>
-<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
-<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">th</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;width: 18%&quot;</span><span class="dt">&gt;</span>Time (IST)<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
-<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">th</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;width: 25%&quot;</span><span class="dt">&gt;</span>Session<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
-<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">th</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;width: 57%&quot;</span><span class="dt">&gt;</span>Topics<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
-<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
-<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">thead</span><span class="dt">&gt;</span></span>
-<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">tbody</span><span class="dt">&gt;</span></span>
-<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
-<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>9:00 AM - 9:15 AM<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Welcome &amp; Setup<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Introduction, environment check, workshop overview<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
-<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
-<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>9:15 AM - 10:15 AM<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;01_SimeoniModel.html&quot;</span><span class="dt">&gt;</span>Session 1: Model Building<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a>• Biological motivation for the Simeoni model<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">/&gt;</span></span>
-<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a>• Mathematical formulation (PK + PD)<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">/&gt;</span></span>
-<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a>• Pumas DSL: @param, @pre, @init, @vars, @dynamics, @derived<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">/&gt;</span></span>
-<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a>• Simulation and visualization</span>
-<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
-<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">tr</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;background-color: #fff3cd;&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>10:15 AM - 10:35 AM<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>☕ Tea Break<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Refreshments &amp; networking<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
-<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
-<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>10:35 AM - 11:35 AM<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;02_ParameterEstimation.html&quot;</span><span class="dt">&gt;</span>Session 2: Parameter Estimation<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a>• PK estimation with error model selection<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">/&gt;</span></span>
-<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a>• PKPD estimation with fixed PK parameters<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">/&gt;</span></span>
-<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a>• Model diagnostics and goodness-of-fit<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">/&gt;</span></span>
-<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a>• Dose-response simulation scenarios (Q3W to Q4D)</span>
-<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
-<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
-<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>11:35 AM - 11:50 AM<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Break<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Hands-on: Design your own dosing scenario<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
-<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
-<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>11:50 AM - 12:50 PM<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;03_SensitivityAnalysis.html&quot;</span><span class="dt">&gt;</span>Session 3: Sensitivity Analysis<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a>• Local sensitivity analysis (LSA) methodology<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">/&gt;</span></span>
-<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a>• Tornado plot interpretation<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">/&gt;</span></span>
-<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a>• Global sensitivity analysis (GSA) with Sobol indices<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">/&gt;</span></span>
-<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a>• Comparing S1 and ST indices</span>
-<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
-<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
-<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>12:50 PM - 1:05 PM<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Wrap-up &amp; Q&amp;A<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Key takeaways, additional resources, discussion<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
-<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
-<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">tbody</span><span class="dt">&gt;</span></span>
-<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">table</span><span class="dt">&gt;</span></span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a><span class="fu">## Workshop Agenda</span></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a>This is a **4-hour workshop** with three main sessions plus breaks for hands-on exercises.</span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">table</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;agenda-table&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">thead</span><span class="dt">&gt;</span></span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">th</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;width: 15%&quot;</span><span class="dt">&gt;</span>Time<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">th</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;width: 25%&quot;</span><span class="dt">&gt;</span>Session<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">th</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;width: 60%&quot;</span><span class="dt">&gt;</span>Topics<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">thead</span><span class="dt">&gt;</span></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">tbody</span><span class="dt">&gt;</span></span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>9:00 - 0:15<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Welcome &amp; Context<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Why modelling matters today ? What is QSP, and how it extends PK/PD ? <span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>9:15 - 9:40<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Foundations of a QSP model<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a>• Layers of a model : system, drug, data, decision <span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>• Conceptual overview of compartments, targets, feedbacks <span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a>• Vantage ADC model as a unifiying example <span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>9:40 - 10:00<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Case Study 1 : ADC model <span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a>• ADC efficacy <span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a>• Visualizing structure -&gt; simulation -&gt; decision <span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a>• Exploring question that a QSP model can answer <span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>10:00 - 11:00<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Hands on with a PK/PD model<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a>• Connecting pharmacology intuition with model behavior , setup and demo <span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a>• Group exploration - modify dosing, potency, half-live etc and observe model outcomes <span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a>• Debrief - Summarize changes, interpreting AUC, Cmax and PD delay <span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>11:00 - 11:25<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Case Study 2 : PK/PD to QSP<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span> How feedbacks, cell dynamics, or multiple targets expand PK/PD to QSP (eg. thrombocytopenia in ADCs) <span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>11:25 - 12:00<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Wrap-Up Discussion<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">tbody</span><span class="dt">&gt;</span></span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">table</span><span class="dt">&gt;</span></span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session Materials</span></span>
 <span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session Materials</span></span>
-<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a>::: {.session-card}</span>
-<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a><span class="fu">### Session 1: The Simeoni Tumor Growth Inhibition Model</span></span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a>::: {.session-card}</span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a><span class="fu">### Session 1: The Simeoni Tumor Growth Inhibition Model</span></span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;time-badge&quot;</span><span class="dt">&gt;</span>60 minutes<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
 <span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;time-badge&quot;</span><span class="dt">&gt;</span>60 minutes<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a>Learn the biological basis and mathematical formulation of the Simeoni TGI model. Build a complete PK-PD model in Pumas and simulate tumor response across multiple dose levels.</span>
 <span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a>Learn the biological basis and mathematical formulation of the Simeoni TGI model. Build a complete PK-PD model in Pumas and simulate tumor response across multiple dose levels.</span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a>**Topics covered:**</span>
 <span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a>**Topics covered:**</span>
-<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Exponential → linear tumor growth transition</span>
-<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Transit compartment model for drug-induced cell death</span>
-<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>2-compartment PK with micro-rate parameterization</span>
-<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Pumas model blocks and simulation workflow</span>
-<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">**Go to Session 1 →**</span><span class="co">](01_SimeoniModel.html)</span></span>
-<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a>::: {.session-card}</span>
-<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a><span class="fu">### Session 2: Parameter Estimation and Dose-Response Analysis</span></span>
+<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Exponential → linear tumor growth transition</span>
+<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Transit compartment model for drug-induced cell death</span>
+<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>2-compartment PK with micro-rate parameterization</span>
+<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Pumas model blocks and simulation workflow</span>
+<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">**Go to Session 1 →**</span><span class="co">](01_SimeoniModel.html)</span></span>
+<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a>::: {.session-card}</span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a><span class="fu">### Session 2: Parameter Estimation and Dose-Response Analysis</span></span>
+<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;time-badge&quot;</span><span class="dt">&gt;</span>60 minutes<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
 <span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;time-badge&quot;</span><span class="dt">&gt;</span>60 minutes<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
+<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a>Estimate model parameters from experimental data using the two-stage approach. Explore how dosing frequency affects tumor control through simulation scenarios.</span>
 <span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a>Estimate model parameters from experimental data using the two-stage approach. Explore how dosing frequency affects tumor control through simulation scenarios.</span>
+<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a>**Topics covered:**</span>
 <span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a>**Topics covered:**</span>
-<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Additive vs proportional error models</span>
-<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>NaivePooled estimation approach</span>
-<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Fixing PK parameters for PD estimation</span>
-<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Dose-exposure-response relationships (Q3W, Q2W, QW, Q4D)</span>
-<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">**Go to Session 2 →**</span><span class="co">](02_ParameterEstimation.html)</span></span>
-<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a>::: {.session-card}</span>
-<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a><span class="fu">### Session 3: Sensitivity Analysis (LSA and GSA)</span></span>
+<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Additive vs proportional error models</span>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>NaivePooled estimation approach</span>
+<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Fixing PK parameters for PD estimation</span>
+<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Dose-exposure-response relationships (Q3W, Q2W, QW, Q4D)</span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">**Go to Session 2 →**</span><span class="co">](02_ParameterEstimation.html)</span></span>
+<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a>::: {.session-card}</span>
+<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a><span class="fu">### Session 3: Sensitivity Analysis (LSA and GSA)</span></span>
+<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;time-badge&quot;</span><span class="dt">&gt;</span>60 minutes<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
 <span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;time-badge&quot;</span><span class="dt">&gt;</span>60 minutes<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
+<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a>Quantify parameter influence on model predictions using local and global sensitivity analysis. Understand which parameters drive tumor growth and treatment response.</span>
 <span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a>Quantify parameter influence on model predictions using local and global sensitivity analysis. Understand which parameters drive tumor growth and treatment response.</span>
+<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a>**Topics covered:**</span>
 <span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a>**Topics covered:**</span>
-<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>One-at-a-time perturbation (LSA)</span>
-<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sobol variance-based indices (GSA)</span>
-<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>First-order (S1) vs total-order (ST) effects</span>
-<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Parameter interactions and biological interpretation</span>
-<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">**Go to Session 3 →**</span><span class="co">](03_SensitivityAnalysis.html)</span></span>
-<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>One-at-a-time perturbation (LSA)</span>
+<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sobol variance-based indices (GSA)</span>
+<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>First-order (S1) vs total-order (ST) effects</span>
+<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Parameter interactions and biological interpretation</span>
+<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">**Go to Session 3 →**</span><span class="co">](03_SensitivityAnalysis.html)</span></span>
+<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb1-235"><a href="#cb1-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a><span class="fu">## Hands-On Scripts</span></span>
-<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-239"><a href="#cb1-239" aria-hidden="true" tabindex="-1"></a>All workshop code is available in the <span class="in">`Handson/`</span> directory:</span>
-<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Script <span class="pp">|</span> Description <span class="pp">|</span></span>
-<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------|-------------|</span></span>
-<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`SimeoneModel.jl`</span> <span class="pp">|</span> Complete model building and simulation <span class="pp">|</span></span>
-<span id="cb1-244"><a href="#cb1-244" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`PKestimation.jl`</span> <span class="pp">|</span> PK parameter estimation with model comparison <span class="pp">|</span></span>
-<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`PKPDestimation.jl`</span> <span class="pp">|</span> PKPD estimation with fixed PK <span class="pp">|</span></span>
-<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`SimulationScenarios.jl`</span> <span class="pp">|</span> Dose-response scenario simulations <span class="pp">|</span></span>
-<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`LocalSensitivityAnalysis.jl`</span> <span class="pp">|</span> LSA with tornado plots <span class="pp">|</span></span>
-<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`GlobalSensitivityAnalysis.jl`</span> <span class="pp">|</span> GSA with Sobol indices <span class="pp">|</span></span>
-<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prerequisites</span></span>
-<span id="cb1-251"><a href="#cb1-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a><span class="fu">### Software Requirements</span></span>
-<span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Pumas v.2.7.1 or later</span>
-<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a><span class="fu">### Background Knowledge</span></span>
+<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a><span class="fu">## Hands-On Scripts</span></span>
+<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a>All workshop code is available in the <span class="in">`Handson/`</span> directory:</span>
+<span id="cb1-239"><a href="#cb1-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Script <span class="pp">|</span> Description <span class="pp">|</span></span>
+<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------|-------------|</span></span>
+<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`SimeoneModel.jl`</span> <span class="pp">|</span> Complete model building and simulation <span class="pp">|</span></span>
+<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`PKestimation.jl`</span> <span class="pp">|</span> PK parameter estimation with model comparison <span class="pp">|</span></span>
+<span id="cb1-244"><a href="#cb1-244" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`PKPDestimation.jl`</span> <span class="pp">|</span> PKPD estimation with fixed PK <span class="pp">|</span></span>
+<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`SimulationScenarios.jl`</span> <span class="pp">|</span> Dose-response scenario simulations <span class="pp">|</span></span>
+<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`LocalSensitivityAnalysis.jl`</span> <span class="pp">|</span> LSA with tornado plots <span class="pp">|</span></span>
+<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`GlobalSensitivityAnalysis.jl`</span> <span class="pp">|</span> GSA with Sobol indices <span class="pp">|</span></span>
+<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-251"><a href="#cb1-251" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prerequisites</span></span>
+<span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a><span class="fu">### Software Requirements</span></span>
+<span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Julia 1.10+** with Pumas environment</span>
+<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Required packages: <span class="in">`Pumas`</span>, <span class="in">`PumasUtilities`</span>, <span class="in">`AlgebraOfGraphics`</span>, <span class="in">`CairoMakie`</span>, <span class="in">`DataFramesMeta`</span>, <span class="in">`CSV`</span>, <span class="in">`GlobalSensitivity`</span></span>
 <span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-258"><a href="#cb1-258" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Basic understanding of pharmacokinetics (compartmental models)</span>
-<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Familiarity with differential equations (conceptual)</span>
-<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Some programming experience (Julia or similar)</span>
-<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reference</span></span>
+<span id="cb1-258"><a href="#cb1-258" aria-hidden="true" tabindex="-1"></a><span class="fu">### Background Knowledge</span></span>
+<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Basic understanding of pharmacokinetics (compartmental models)</span>
+<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Familiarity with differential equations (conceptual)</span>
+<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Some programming experience (Julia or similar)</span>
 <span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a>**Primary Reference:**</span>
+<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb1-265"><a href="#cb1-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a>Simeoni M, Magni P, Cammia C, De Nicolao G, Croci V, Pesenti E, Germani M, Poggesi I, Rocchetti M. (2004) &quot;Predictive Pharmacokinetic-Pharmacodynamic Modeling of Tumor Growth Kinetics in Xenograft Models after Administration of Anticancer Agents.&quot; *Cancer Research* 64:1094-1101.</span>
+<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reference</span></span>
 <span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a><span class="fu">## Contact</span></span>
+<span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a>**Primary Reference:**</span>
 <span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a>For questions about this workshop or the Pumas platform, please contact:</span>
+<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a>Simeoni M, Magni P, Cammia C, De Nicolao G, Croci V, Pesenti E, Germani M, Poggesi I, Rocchetti M. (2004) &quot;Predictive Pharmacokinetic-Pharmacodynamic Modeling of Tumor Growth Kinetics in Xenograft Models after Administration of Anticancer Agents.&quot; *Cancer Research* 64:1094-1101.</span>
 <span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Workshop Materials**: <span class="co">[</span><span class="ot">GitHub Repository</span><span class="co">](https://github.com/PumasAI-Labs/QSP-ICOP2026)</span></span>
-<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Pumas Documentation**: <span class="co">[</span><span class="ot">docs.pumas.ai</span><span class="co">](https://docs.pumas.ai)</span></span>
-<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Pumas Support**: <span class="co">[</span><span class="ot">Pumas Discourse</span><span class="co">](https://discourse.pumas.ai)</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></pre></div>
+<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a><span class="fu">## Contact</span></span>
+<span id="cb1-275"><a href="#cb1-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a>For questions about this workshop or the Pumas platform, please contact:</span>
+<span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Workshop Materials**: <span class="co">[</span><span class="ot">GitHub Repository</span><span class="co">](https://github.com/pumasAI/education)</span></span>
+<span id="cb1-279"><a href="#cb1-279" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Pumas Documentation**: <span class="co">[</span><span class="ot">docs.pumas.ai</span><span class="co">](https://docs.pumas.ai)</span></span>
+<span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Pumas Support**: <span class="co">[</span><span class="ot">support@pumas.ai</span><span class="co">](mailto:support@pumas.ai)</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
