@@ -132,54 +132,46 @@ This is a **4-hour workshop** with three main sessions plus breaks for hands-on 
 </thead>
 <tbody>
 <tr>
-<td><strong>0:00 - 0:15</strong></td>
-<td>Welcome & Setup</td>
-<td>Introduction, environment check, workshop overview</td>
+<td><strong>9:00 - 0:15</strong></td>
+<td>Welcome & Context</td>
+<td>Why modelling matters today ? What is QSP, and how it extends PK/PD ? </td>
 </tr>
 <tr>
-<td><strong>0:15 - 1:15</strong></td>
-<td><a href="01_SimeoniModel.html">Session 1: Model Building</a></td>
+<td><strong>9:15 - 9:40</strong></td>
+<td>Foundations of a QSP model</td>
 <td>
-• Biological motivation for the Simeoni model<br/>
-• Mathematical formulation (PK + PD)<br/>
-• Pumas DSL: @param, @pre, @init, @vars, @dynamics, @derived<br/>
-• Simulation and visualization
+• Layers of a model : system, drug, data, decision <br>
+• Conceptual overview of compartments, targets, feedbacks <br>
+• Vantage ADC model as a unifiying example <br>
 </td>
 </tr>
 <tr>
-<td><strong>1:15 - 1:30</strong></td>
-<td>Break</td>
-<td>Hands-on: Modify model parameters and observe effects</td>
-</tr>
-<tr>
-<td><strong>1:30 - 2:30</strong></td>
-<td><a href="02_ParameterEstimation.html">Session 2: Parameter Estimation</a></td>
+<td><strong>9:40 - 10:00</strong></td>
+<td>Case Study 1 : ADC model </td>
 <td>
-• PK estimation with error model selection<br/>
-• PKPD estimation with fixed PK parameters<br/>
-• Model diagnostics and goodness-of-fit<br/>
-• Dose-response simulation scenarios (Q3W to Q4D)
+• ADC efficacy <br>
+• Visualizing structure -> simulation -> decision <br>
+• Exploring question that a QSP model can answer <br>
 </td>
 </tr>
 <tr>
-<td><strong>2:30 - 2:45</strong></td>
-<td>Break</td>
-<td>Hands-on: Design your own dosing scenario</td>
-</tr>
-<tr>
-<td><strong>2:45 - 3:45</strong></td>
-<td><a href="03_SensitivityAnalysis.html">Session 3: Sensitivity Analysis</a></td>
+<td><strong>10:00 - 11:00</strong></td>
+<td>Hands on with a PK/PD model</td>
 <td>
-• Local sensitivity analysis (LSA) methodology<br/>
-• Tornado plot interpretation<br/>
-• Global sensitivity analysis (GSA) with Sobol indices<br/>
-• Comparing S1 and ST indices
+• Connecting pharmacology intuition with model behavior , setup and demo <br>
+• Group exploration - modify dosing, potency, half-live etc and observe model outcomes <br>
+• Debrief - Summarize changes, interpreting AUC, Cmax and PD delay <br>
 </td>
 </tr>
 <tr>
-<td><strong>3:45 - 4:00</strong></td>
-<td>Wrap-up & Q&A</td>
-<td>Key takeaways, additional resources, discussion</td>
+<td><strong>11:00 - 11:25</strong></td>
+<td>Case Study 2 : PK/PD to QSP</td>
+<td> How feedbacks, cell dynamics, or multiple targets expand PK/PD to QSP (eg. thrombocytopenia in ADCs) </td>
+</tr>
+<tr>
+<td><strong>11:25 - 12:00</strong></td>
+<td>Wrap-Up Discussion</td>
+<td></td>
 </tr>
 </tbody>
 </table>

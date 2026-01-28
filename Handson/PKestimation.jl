@@ -35,8 +35,7 @@ pk_raw = CSV.read("data/PKdata.csv", DataFrame)
 # Prepare data for Pumas
 # - Time_day: time relative to dose (starts at 0)
 # - Conc_ng_mL: concentration observations
-# - Dose: 45 mg/kg = 0.9 mg (mouse weight 0.025 kg × 45 mg/kg × 1000 μg/mg / 1000 = 1.125 mg)
-#   However, based on MATLAB model, dose is 0.9 mg
+# - Dose: 45 mg/kg = 0.9 mg (mouse weight 0.020 kg × 45 mg/kg × 1000 μg/mg / 1000 = 0.9 mg)
 pk_data = @chain pk_raw begin
     rename(:Time_day => :time, :Conc_ng_mL => :dv, :Dose_45_mg_kg => :amt)
     @transform :id = 1
